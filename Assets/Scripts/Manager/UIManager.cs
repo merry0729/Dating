@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WindowUIType
+{ 
+    SettingUI,
+}
+
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance = null;
@@ -9,8 +14,9 @@ public class UIManager : MonoBehaviour
     Dictionary<SceneType, GameObject> sceneUIPrefab = new Dictionary<SceneType, GameObject>();
 
     [Header("[ UI Root ]")]
-    public Transform UICanvas;
-    public Transform UIParent;
+    public GameObject UICanvasPrefab;
+    private GameObject UICanvas;
+    private Transform UIParent;
     
     private GameObject settingUIObj;
     private GameObject currentSceneUI;
@@ -25,20 +31,28 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
-
-        DontDestroyOnLoad(this);
-
-        Init();
+            DontDestroyOnLoad(this);
+            Init();
+        }
+        else
+        {
+            Destroy(UICanvas);
+            Destroy(this);
+        }
     }
 
     private void Init()
     {
         if (UICanvas == null)
-            UICanvas = GameObject.Find("Canvas").transform;
+        {
+            UICanvas = Instantiate(UICanvasPrefab);
+            DontDestroyOnLoad(UICanvas);
+        }
 
         if (UIParent == null)
-            UIParent = GameObject.Find("CommonUI").transform;
+            UIParent = UICanvas.transform.Find("SceneUI").transform;
 
         sceneUIPrefab.Add(SceneType.IntroScene, introUIPrefab);
         sceneUIPrefab.Add(SceneType.PlayScene, playUIPrefab);
@@ -48,6 +62,16 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(settingUIObj);
     }
 
+    public void ActiveWindowUI(WindowUIType windowUIType, bool isOn)
+    {
+        switch (windowUIType)
+        {
+            case WindowUIType.SettingUI:
+                settingUIObj.SetActive(isOn);
+                break;
+        }
+    }
+
     public void ActiveUI(GameObject uiObject, bool isOn)
     {
         uiObject.SetActive(isOn);
@@ -55,7 +79,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject LoadUI(GameObject uiObject)
     {
-        GameObject loadedUI = Instantiate(uiObject, UICanvas);
+        GameObject loadedUI = Instantiate(uiObject, UICanvas.transform);
         loadedUI.SetActive(false);
 
         return loadedUI;
@@ -63,6 +87,9 @@ public class UIManager : MonoBehaviour
 
     public void LoadSceneUI(SceneType sceneType)
     {
-        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], UIParent);
+        if (currentSceneUI != null)
+            Destroy(currentSceneUI);
+
+        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], UIParent.transform);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,27 +15,48 @@ public class SceneControlManager : MonoBehaviour
 {
     public static SceneControlManager Instance = null;
 
-    Dictionary<SceneType, string> sceneTypeDic = new Dictionary<SceneType, string>();
+    [Header("[ Manager Obj ]")]
+    public List<GameObject> managerList = new List<GameObject>();
 
+    private GameObject currentSceneManager;
+
+    Dictionary<SceneType, GameObject> sceneManagerDic = new Dictionary<SceneType, GameObject>();
+    Dictionary<SceneType, string> sceneTypeStrDic = new Dictionary<SceneType, string>();
+   
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
-
-        DontDestroyOnLoad(this);
-
-        Init();
+            DontDestroyOnLoad(this);
+            Init();
+        }
     }
 
     private void Init()
     {
-        foreach (var value in Enum.GetValues(typeof(SceneType)))
+        for(int index = 0; index < Enum.GetValues(typeof(SceneType)).Length; index++)
         {
-            SceneType sceneType = (SceneType)value;
+            SceneType sceneType = (SceneType)index;
 
-            if (!sceneTypeDic.ContainsKey(sceneType))
-                sceneTypeDic.Add(sceneType, sceneType.ToString());
+            if (!sceneManagerDic.ContainsKey(sceneType))
+                sceneManagerDic.Add(sceneType, managerList[index]);
+
+            if (!sceneTypeStrDic.ContainsKey(sceneType))
+                sceneTypeStrDic.Add(sceneType, sceneType.ToString());
         }
+        
+
+        //foreach (var value in Enum.GetValues(typeof(SceneType)))
+        //{
+        //    SceneType sceneType = (SceneType)value;
+
+        //    //if(!sceneManagerDic.ContainsKey(sceneType)) 
+        //    //    sceneManagerDic.Add(sceneType, managerList[])
+
+        //    if (!sceneTypeStrDic.ContainsKey(sceneType))
+        //        sceneTypeStrDic.Add(sceneType, sceneType.ToString());
+        //}
 
         //foreach (var dic in sceneTypeDic)
         //    Debug.Log($"{dic.Key}");
@@ -44,21 +66,28 @@ public class SceneControlManager : MonoBehaviour
 
     public void LoadSceneType(SceneType sceneType)
     {
-        SceneManager.LoadScene(sceneTypeDic[sceneType]);
+        Destroy(currentSceneManager);
+
+        SceneManager.LoadScene(sceneTypeStrDic[sceneType]);
         SceneControl(sceneType);
     }
 
     void SceneControl(SceneType sceneType)
     {
         UIManager.Instance.LoadSceneUI(sceneType);
+        LoadSceneManager(sceneType);
+    }
 
-        switch(sceneType)
-        {
-            case SceneType.IntroScene:
-                break;
+    void LoadSceneManager(SceneType sceneType)
+    {
+        currentSceneManager = Instantiate(sceneManagerDic[sceneType], GameManager.Instance.transform);
+    }
 
-            case SceneType.PlayScene:
-                break;
-        }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+            LoadSceneType(SceneType.IntroScene);
     }
 }

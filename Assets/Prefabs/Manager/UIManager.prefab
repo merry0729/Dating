@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6735cfac805365045a917c243d8045f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvas: {fileID: 0}
-  UIParent: {fileID: 0}
+  UICanvasPrefab: {fileID: 5019599015289044920, guid: ed8ee2fc37efa334aad2f25ad2733204, type: 3}
   settingUIPrefab: {fileID: 7372906348609055379, guid: 55652dbfe53f220408cb5673b27db573, type: 3}
   introUIPrefab: {fileID: 3551729660942049759, guid: d718ed2d495059d49b5e0fbd4fc41889, type: 3}
   playUIPrefab: {fileID: 8992470934578374913, guid: 908a54e8a226b0e429bed246b4acb6c7, type: 3}

@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
-    [Header("[ Setting ]")]
-    public GameObject settingBox;
-
     [Header("[ Button ]")]
     private UIButton startButton;
     private UIButton settingButton;
@@ -53,13 +50,7 @@ public class IntroManager : MonoBehaviour
     {
         Debug.Log($"OnClickSetting");
 
-        if (settingBox == null)
-        {
-            Debug.Log($"SettingBox is Null");
-            return;
-        }
-
-        settingBox.SetActive(!settingBox.activeSelf);
+        UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, true);
     }
 
     void OnClickExit()
