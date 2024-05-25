@@ -28,7 +28,7 @@ public class SceneControlManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
             Init();
         }
     }

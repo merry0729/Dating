@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7205028989894619828}
-  - component: {fileID: -8983851241163638751}
+  - component: {fileID: -5600305266064954575}
   m_Layer: 0
   m_Name: ObjectPoolManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8983851241163638751
+--- !u!114 &-5600305266064954575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7d793329b5a3846b992a6d1070c39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationPrefab: {fileID: 8838254727240060285, guid: 3f8f5d2f5ec056a4a95b3e622703093e, type: 3}
   currentPoolingObject: {fileID: 0}

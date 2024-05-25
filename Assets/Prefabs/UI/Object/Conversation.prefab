@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8460074882887734401}
   m_Layer: 5
-  m_Name: Conv
+  m_Name: Conversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

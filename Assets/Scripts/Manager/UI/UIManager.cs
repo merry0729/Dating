@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [Header("[ UI Root ]")]
     public GameObject UICanvasPrefab;
     private GameObject UICanvas;
-    private Transform UIParent;
+    public Transform UIParent;
     
     private GameObject settingUIObj;
     private GameObject currentSceneUI;
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
             Init();
         }
         else
@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
 
         settingUIObj = LoadUI(settingUIPrefab);
         settingUIObj.SetActive(false);
-        DontDestroyOnLoad(settingUIObj);
+        //DontDestroyOnLoad(settingUIObj);
     }
 
     public void ActiveWindowUI(WindowUIType windowUIType, bool isOn)
@@ -91,5 +91,10 @@ public class UIManager : MonoBehaviour
             Destroy(currentSceneUI);
 
         currentSceneUI = Instantiate(sceneUIPrefab[sceneType], UIParent.transform);
+    }
+
+    public GameObject GetCurrentSceneUI()
+    {
+        return currentSceneUI;
     }
 }
