@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WindowUIType
-{ 
-    SettingUI,
-}
-
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance = null;

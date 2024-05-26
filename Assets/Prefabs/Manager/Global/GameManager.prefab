@@ -49,6 +49,7 @@ MonoBehaviour:
   uiManagerPrefab: {fileID: 7425288733938417601, guid: 40cb634f650879d4cb4965e9ec782651, type: 3}
   sceneControlManagerPrefab: {fileID: 212199013645294894, guid: 8e769295ccaf0f6468c1c42598e76423, type: 3}
   objectPoolManagerPrefab: {fileID: 6444665543669009165, guid: 775d83fd2d0f1864ab09db1e9871e4d7, type: 3}
+  conversationManagerPrefab: {fileID: 7505874903980060577, guid: 6dc5c6b156f7f7647bffab9e9969aae4, type: 3}
 --- !u!1 &6684156847164689004
 GameObject:
   m_ObjectHideFlags: 0

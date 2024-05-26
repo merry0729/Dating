@@ -4,19 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PoolType
-{
-    Conversation,
-}
-
-public enum PoolParentType
-{
-    UI,
-    GameObject,
-}
-
 public class ObjectPoolManager : MonoBehaviour
 {
+    public static ObjectPoolManager Instance = null;
+
     public GameObject conversationPrefab;
 
     public Dictionary<PoolType, GameObject> poolPrefabDic = new Dictionary<PoolType, GameObject>();
@@ -28,17 +19,23 @@ public class ObjectPoolManager : MonoBehaviour
 
     private void Awake()
     {
-        InitPool();
+        Init();
     }
 
+    void Init()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            InitPool();
+        }
+    }
+
+    // Pool Dictionary Setting.
     void InitPool()
     {
-        Debug.Log($"Enum.GetValues(typeof(PoolType)).Length = {Enum.GetValues(typeof(PoolType)).Length}");
-
         for (int index = 0; index < Enum.GetValues(typeof(PoolType)).Length; index++)
         {
-            Debug.Log($"index = {index}");
-
             // 풀링 오브젝트 프리팹.
             poolPrefabDic.Add((PoolType)index, conversationPrefab);
 
@@ -60,25 +57,37 @@ public class ObjectPoolManager : MonoBehaviour
         return pooledObejct.GetComponent<PoolingObject>();
     }
 
+    // Create Pool Object.
     PoolingObject CreatePoolObject(PoolType poolType)
     {
-        PoolingObject pooledObject = Instantiate(poolPrefabDic[poolType], poolBoxDic[poolType].transform).GetComponent<PoolingObject>();
+        PoolingObject pooledObject = Instantiate(poolPrefabDic[poolType], poolBoxDic[poolType].transform).AddComponent<PoolingObject>();
         poolObjectDic[poolType].Add(pooledObject);
         return pooledObject;
     }
 
+    // Load Pool Object.
     PoolingObject LoadPoolObject(PoolType poolType)
     {
         PoolingObject loadObject = poolObjectDic[poolType].Find(x => !x.gameObject.activeSelf);
         return loadObject;
     }
 
-    void DestroyPoolObject(PoolType poolType)
+    // Enable Pool Object.
+    public void EnablePoolObject(PoolType poolType, PoolingObject poolObject)
     {
-        
+        poolObject.gameObject.SetActive(false);
+        poolObject.transform.SetParent(poolBoxDic[poolType].transform);
     }
 
-    public void PoolObject(PoolType poolType)
+    // Destroy Pool Object.
+    void DestroyPoolObject(PoolType poolType, PoolingObject poolObject)
+    {
+        poolObjectDic[poolType].Remove(poolObject);
+        Destroy(poolObject.gameObject);
+    }
+
+    // Pool Object.
+    public PoolingObject PoolObject(PoolType poolType)
     {
         PoolingObject selectedPoolingObject = null;
 
@@ -95,17 +104,14 @@ public class ObjectPoolManager : MonoBehaviour
         switch (poolParentDic[poolType])
         {
             case PoolParentType.UI:
-                selectedPoolingObject.transform.parent = UIManager.Instance.GetCurrentSceneUI().transform;
+                selectedPoolingObject.transform.SetParent(UIManager.Instance.GetCurrentSceneUI().transform);
                 break;
 
             case PoolParentType.GameObject:
                 break;
         }
-    }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            PoolObject(PoolType.Conversation);
+        selectedPoolingObject.gameObject.SetActive(true);
+        return selectedPoolingObject;
     }
 }

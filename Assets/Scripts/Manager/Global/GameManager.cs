@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject uiManagerPrefab;
     public GameObject sceneControlManagerPrefab;
     public GameObject objectPoolManagerPrefab;
+    public GameObject conversationManagerPrefab;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
             Instantiate(uiManagerPrefab, transform);
             Instantiate(sceneControlManagerPrefab, transform);
             Instantiate(objectPoolManagerPrefab, transform);
+            Instantiate(conversationManagerPrefab, transform);
         }
         else
         {

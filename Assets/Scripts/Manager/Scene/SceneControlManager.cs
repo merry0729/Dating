@@ -5,12 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum SceneType
-{
-    IntroScene,
-    PlayScene,
-}
-
 public class SceneControlManager : MonoBehaviour
 {
     public static SceneControlManager Instance = null;

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CodeWriter</id>
+    <version>0.3.0</version>
+    <title>CodeWriter</title>
+    <authors>Esun Kim</authors>
+    <owners>Esun Kim</owners>
+    <licenseUrl>https://raw.githubusercontent.com/SaladLab/CodeWriter/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SaladLab/CodeWriter</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/SaladLab/CodeWriter/master/docs/Icon_64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helper class for generating code concisely.</description>
+    <releaseNotes>Add OpenIndent method to CodeWriter. (with extension method i and I)
+Add multiple statements to CodeWriter.OpenBlock.
+Change type of CodeWriter.HeadLines to List\&lt;string\&gt;</releaseNotes>
+    <copyright>Copyright © 2016 SaladLab</copyright>
+    <tags>code write builder generator</tags>
+  </metadata>
+</package>
