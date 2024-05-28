@@ -33,10 +33,17 @@ public enum PoolParentType
     GameObject,
 }
 
-public enum TransformType
+public enum ConPosType
 {
     Top,
     Middle,
     Bottom,
+}
+
+public enum ConScaleType
+{
+    Down,
+    Normal,
+    Up,
 }
 #endregion

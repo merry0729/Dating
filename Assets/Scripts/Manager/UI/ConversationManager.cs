@@ -2,61 +2,100 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConversationManager : MonoBehaviour
+public class ConversationManager : Singleton<ConversationManager>
 {
-    public static ConversationManager Instance;
+    Vector3 topPos = new Vector3(0f, 440f, 0f);
+    Vector3 middlePos = Vector3.zero;
+    Vector3 bottomPos = new Vector3(0f, -440f, 0f);
 
-    Vector3 topVec = new Vector3(0f, 440f, 0f);
-    Vector3 middleVec = Vector3.zero;
-    Vector3 bottomVec = new Vector3(0f, -440f, 0f);
+    Vector3 downScale = new Vector3(0.5f, 0.5f, 1f);
+    Vector3 normalScale = Vector3.one;
+    Vector3 upScale = new Vector3(2f, 2f, 1f);
 
     Dictionary<PoolingObject, UIConversation> conversationDic = new Dictionary<PoolingObject, UIConversation>();
 
     Queue<UIConversation> conversationQueue = new Queue<UIConversation>();
+    UIConversation currentUICon;
+
+    ConversationTable conTable;
+    ConversationData currentConData;
+
+    int currentId = 1;
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+
     }
 
-    public Vector3 GetVec(TransformType transformType)
+    private void Start()
     {
-        switch (transformType)
+        conTable = ConversationData.Table;
+
+        Debug.Log($"conTable Start : {conTable}");
+        currentConData = conTable.TryGet(currentId);
+    }
+
+    public void StartConversation()
+    {
+        Debug.Log($"conTable : {conTable}");
+        currentConData = conTable.TryGet(currentId);
+        PoolConversation().UpdateConversation(currentConData);
+    }
+
+    public void ShowConversation(int index)
+    {
+        currentConData = conTable.TryGet(index);
+        PoolConversation().UpdateConversation(currentConData);
+    }
+
+    public Vector3 GetPos(ConPosType posType)
+    {
+        switch (posType)
         {
-            case TransformType.Top:
-                return transform.localPosition = topVec;
-            case TransformType.Middle:
-                return transform.localPosition = middleVec;
-            case TransformType.Bottom:
-                return transform.localPosition = bottomVec;
+            case ConPosType.Top:
+                return topPos;
+            case ConPosType.Middle:
+                return middlePos;
+            case ConPosType.Bottom:
+                return bottomPos;
             default:
-                return transform.localPosition = middleVec;
+                return normalScale;
         }
     }
 
-    void PoolConversation()
+    public Vector3 GetScale(ConScaleType scaleType)
     {
-        int ran = Random.Range(0, 3);
+        switch (scaleType)
+        {
+            case ConScaleType.Down:
+                return downScale;
+            case ConScaleType.Normal:
+                return normalScale;
+            case ConScaleType.Up:
+                return upScale;
+            default:
+                return normalScale;
+        }
+    }
 
-        TransformType transformType = (TransformType)ran;
-
+    UIConversation PoolConversation()
+    {
         PoolingObject poolingObject = ObjectPoolManager.Instance.PoolObject(PoolType.Conversation);
         UIConversation uiConversation = null;
 
         if (!conversationDic.ContainsKey(poolingObject))
         {
             uiConversation = poolingObject.GetComponent<UIConversation>();
-            uiConversation.SetTransformType(transformType);
             conversationDic.Add(poolingObject, uiConversation);
         }
         else
         {
             uiConversation = conversationDic[poolingObject];
-            uiConversation.SetTransformType(transformType);
         }
 
         conversationQueue.Enqueue(uiConversation);
+
+        return uiConversation;
     }
 
     void EnableConversation()
@@ -65,6 +104,8 @@ public class ConversationManager : MonoBehaviour
             conversationQueue.Dequeue().EndConversation();
     }
 
+    ConversationTable table;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -72,5 +113,18 @@ public class ConversationManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             EnableConversation();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            table = ConversationData.Table;
+
+
+            Debug.Log($"conver id : {table}");
+            Debug.Log($"conver id : {table.Count}");
+
+            Debug.Log($"conver id : {table.TryGet(1).Id}");
+            Debug.Log($"conver id : {table.TryGet(1).Text}");
+            Debug.Log($"conver id : {table.TryGet(2).Id}");
+        }
     }
 }

@@ -1,29 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIConversation : MonoBehaviour
 {
-    TransformType transformType = TransformType.Middle;
-    PoolingObject poolingObject;
+    ConPosType conPosType = ConPosType.Middle;
+    ConScaleType conScaleType = ConScaleType.Normal;
 
+    public Image conImage;
+    public TextMeshProUGUI conText;
+
+    PoolingObject poolingObject;
     RectTransform rectTransform;
+    ConversationData currentConData;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void SetTransformType(TransformType type)
+    public void SetTransformType(ConPosType posType, ConScaleType scaleType)
     {
-        transformType = type;
+        conPosType = posType;
+        conScaleType = scaleType;
         SetTransform();
     }
 
     void SetTransform()
     {
-        rectTransform.anchoredPosition = ConversationManager.Instance.GetVec(transformType);
-        transform.localScale = Vector3.one;
+        rectTransform.anchoredPosition = ConversationManager.Instance.GetPos(conPosType);
+        transform.localScale = ConversationManager.Instance.GetScale(conScaleType);
     }
 
     public void EndConversation()
@@ -32,5 +40,14 @@ public class UIConversation : MonoBehaviour
             poolingObject = GetComponent<PoolingObject>();
 
         ObjectPoolManager.Instance.EnablePoolObject(PoolType.Conversation, poolingObject);
+        ConversationManager.Instance.ShowConversation(currentConData.Next);
+    }
+
+    public void UpdateConversation(ConversationData conversationData)
+    {
+        currentConData = conversationData;
+        conText.text = $"{currentConData.Text}";
+
+        SetTransformType((ConPosType)conversationData.Pos, (ConScaleType)conversationData.Scale);
     }
 }

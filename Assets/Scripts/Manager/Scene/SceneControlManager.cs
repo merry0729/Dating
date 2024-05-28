@@ -4,11 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
-public class SceneControlManager : MonoBehaviour
+public class SceneControlManager : Singleton<SceneControlManager>
 {
-    public static SceneControlManager Instance = null;
-
     [Header("[ Manager Obj ]")]
     public List<GameObject> managerList = new List<GameObject>();
 
@@ -19,9 +18,8 @@ public class SceneControlManager : MonoBehaviour
    
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-            Instance = this;
             //DontDestroyOnLoad(this);
             Init();
         }
@@ -58,11 +56,14 @@ public class SceneControlManager : MonoBehaviour
         SceneControl(SceneType.IntroScene);
     }
 
-    public void LoadSceneType(SceneType sceneType)
+    public async void LoadSceneType(SceneType sceneType)
     {
         Destroy(currentSceneManager);
 
-        SceneManager.LoadScene(sceneTypeStrDic[sceneType]);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneTypeStrDic[sceneType]);
+
+        await UniTask.WaitUntil(() => asyncLoad.isDone);
+
         SceneControl(sceneType);
     }
 

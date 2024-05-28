@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    public static UIManager Instance = null;
-
     Dictionary<SceneType, GameObject> sceneUIPrefab = new Dictionary<SceneType, GameObject>();
 
     [Header("[ UI Root ]")]
@@ -25,9 +23,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-            Instance = this;
             //DontDestroyOnLoad(this);
             Init();
         }

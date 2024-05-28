@@ -1,14 +1,20 @@
 ﻿[
   {
-    "Id": "1",
+    "Id": 1,
     "Name": "Con_1",
     "Type": "Con",
-    "Text": "안녕"
+    "Pos": 0,
+    "Scale": 1,
+    "Text": "안녕",
+    "Next": 2
   },
   {
-    "Id": "2",
+    "Id": 2,
     "Name": "Con_2",
     "Type": "Con",
-    "Text": "감사"
+    "Pos": 2,
+    "Scale": 1,
+    "Text": "감사",
+    "Next": 3
   }
 ]
