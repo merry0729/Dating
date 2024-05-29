@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UIConversation : MonoBehaviour
 {
     ConPosType conPosType = ConPosType.Middle;
-    ConScaleType conScaleType = ConScaleType.Normal;
 
     public Image conImage;
     public TextMeshProUGUI conText;
@@ -21,17 +20,15 @@ public class UIConversation : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void SetTransformType(ConPosType posType, ConScaleType scaleType)
+    public void SetTransformType(ConPosType posType)
     {
         conPosType = posType;
-        conScaleType = scaleType;
         SetTransform();
     }
 
     void SetTransform()
     {
         rectTransform.anchoredPosition = ConversationManager.Instance.GetPos(conPosType);
-        transform.localScale = ConversationManager.Instance.GetScale(conScaleType);
     }
 
     public void EndConversation()
@@ -48,6 +45,6 @@ public class UIConversation : MonoBehaviour
         currentConData = conversationData;
         conText.text = $"{currentConData.Text}";
 
-        SetTransformType((ConPosType)conversationData.Pos, (ConScaleType)conversationData.Scale);
+        SetTransformType((ConPosType)conversationData.ConPos);
     }
 }

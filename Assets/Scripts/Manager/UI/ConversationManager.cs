@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class ConversationManager : Singleton<ConversationManager>
 {
-    Vector3 topPos = new Vector3(0f, 440f, 0f);
-    Vector3 middlePos = Vector3.zero;
-    Vector3 bottomPos = new Vector3(0f, -440f, 0f);
-
-    Vector3 downScale = new Vector3(0.5f, 0.5f, 1f);
-    Vector3 normalScale = Vector3.one;
-    Vector3 upScale = new Vector3(2f, 2f, 1f);
+    Vector3 topPos;
+    Vector3 middlePos;
+    Vector3 bottomPos;
 
     Dictionary<PoolingObject, UIConversation> conversationDic = new Dictionary<PoolingObject, UIConversation>();
 
@@ -19,6 +15,9 @@ public class ConversationManager : Singleton<ConversationManager>
 
     ConversationTable conTable;
     ConversationData currentConData;
+
+    ConversationSettingTable conSetTable;
+    ConversationSettingData conSetData;
 
     int currentId = 1;
 
@@ -29,23 +28,21 @@ public class ConversationManager : Singleton<ConversationManager>
 
     private void Start()
     {
-        conTable = ConversationData.Table;
-
-        Debug.Log($"conTable Start : {conTable}");
-        currentConData = conTable.TryGet(currentId);
+        ConversationDataSetting();
     }
 
     public void StartConversation()
     {
-        Debug.Log($"conTable : {conTable}");
         currentConData = conTable.TryGet(currentId);
         PoolConversation().UpdateConversation(currentConData);
+        PlayManager.Instance.SetChracter(currentConData.Who, currentConData.CharPos, currentConData.CharScale);
     }
 
     public void ShowConversation(int index)
     {
         currentConData = conTable.TryGet(index);
         PoolConversation().UpdateConversation(currentConData);
+        PlayManager.Instance.SetChracter(currentConData.Who, currentConData.CharPos, currentConData.CharScale);
     }
 
     public Vector3 GetPos(ConPosType posType)
@@ -59,22 +56,7 @@ public class ConversationManager : Singleton<ConversationManager>
             case ConPosType.Bottom:
                 return bottomPos;
             default:
-                return normalScale;
-        }
-    }
-
-    public Vector3 GetScale(ConScaleType scaleType)
-    {
-        switch (scaleType)
-        {
-            case ConScaleType.Down:
-                return downScale;
-            case ConScaleType.Normal:
-                return normalScale;
-            case ConScaleType.Up:
-                return upScale;
-            default:
-                return normalScale;
+                return middlePos;
         }
     }
 
@@ -104,7 +86,33 @@ public class ConversationManager : Singleton<ConversationManager>
             conversationQueue.Dequeue().EndConversation();
     }
 
-    ConversationTable table;
+    void ConversationDataSetting()
+    {
+        // Conversation Table.
+        conTable = ConversationData.Table;
+        //// Conversation Data.
+        //currentConData = conTable.TryGet(currentId);
+
+        // Conversation Setting Data.
+        conSetTable = ConversationSettingData.Table;
+
+        // Conversation Setting Data Pos.
+        conSetData = conSetTable.TryGet((int)ConSetType.Pos);
+
+
+        topPos = new Vector3(conSetData.ConPos[(int)ConPosType.Top][0],
+                             conSetData.ConPos[(int)ConPosType.Top][1],
+                             conSetData.ConPos[(int)ConPosType.Top][2]);
+
+        middlePos = new Vector3(conSetData.ConPos[(int)ConPosType.Middle][0],
+                             conSetData.ConPos[(int)ConPosType.Middle][1],
+                             conSetData.ConPos[(int)ConPosType.Middle][2]);
+
+        bottomPos = new Vector3(conSetData.ConPos[(int)ConPosType.Bottom][0],
+                             conSetData.ConPos[(int)ConPosType.Bottom][1],
+                             conSetData.ConPos[(int)ConPosType.Bottom][2]);
+    }
+
 
     private void Update()
     {
@@ -113,18 +121,5 @@ public class ConversationManager : Singleton<ConversationManager>
 
         if (Input.GetMouseButtonDown(0))
             EnableConversation();
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            table = ConversationData.Table;
-
-
-            Debug.Log($"conver id : {table}");
-            Debug.Log($"conver id : {table.Count}");
-
-            Debug.Log($"conver id : {table.TryGet(1).Id}");
-            Debug.Log($"conver id : {table.TryGet(1).Text}");
-            Debug.Log($"conver id : {table.TryGet(2).Id}");
-        }
     }
 }

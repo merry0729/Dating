@@ -3,14 +3,14 @@ using System;
 using UnityEngine;
 using TemplateTable;
 
-[Serializable]
 public partial class ConversationData
 {
     public int Id;
     public string Name = "";
-    public string Type = "";
-    public int Pos;
-    public int Scale;
+    public int Who;
+    public int ConPos;
+    public int CharPos;
+    public int CharScale;
     public string Text = "";
     public int Next;
     

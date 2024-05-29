@@ -2,19 +2,21 @@
   {
     "Id": 1,
     "Name": "Con_1",
-    "Type": "Con",
-    "Pos": 0,
-    "Scale": 1,
-    "Text": "안녕",
+    "Who": 0,
+    "ConPos": 0,
+    "CharPos": 0,
+    "CharScale": 1,
+    "Text": "Hello",
     "Next": 2
   },
   {
     "Id": 2,
     "Name": "Con_2",
-    "Type": "Con",
-    "Pos": 2,
-    "Scale": 1,
-    "Text": "감사",
+    "Who": 0,
+    "ConPos": 2,
+    "CharPos": 1,
+    "CharScale": 2,
+    "Text": "Thank",
     "Next": 3
   }
 ]
