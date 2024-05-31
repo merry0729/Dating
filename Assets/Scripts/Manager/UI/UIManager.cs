@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,8 @@ public class UIManager : Singleton<UIManager>
     private GameObject UICanvas;
     public Transform UIParent;
     
-    private GameObject settingUIObj;
-    private GameObject currentSceneUI;
+    public GameObject settingUIObj;
+    public GameObject currentSceneUI;
 
     [Header("[ UI Prefab ]")]
     public GameObject settingUIPrefab;
@@ -20,6 +21,8 @@ public class UIManager : Singleton<UIManager>
     [Header("[ Scene UI Prefab ]")]
     public GameObject introUIPrefab;
     public GameObject playUIPrefab;
+
+    public Action<WindowUIType, bool> WindowOpenAction;
 
     private void Awake()
     {
@@ -50,7 +53,6 @@ public class UIManager : Singleton<UIManager>
         sceneUIPrefab.Add(SceneType.PlayScene, playUIPrefab);
 
         settingUIObj = LoadUI(settingUIPrefab);
-        settingUIObj.SetActive(false);
         //DontDestroyOnLoad(settingUIObj);
     }
 
@@ -62,6 +64,9 @@ public class UIManager : Singleton<UIManager>
                 settingUIObj.SetActive(isOn);
                 break;
         }
+
+        Debug.Log($"windowUIType : {windowUIType} / isOn : {isOn}");
+        WindowOpenAction.Invoke(windowUIType, isOn);
     }
 
     public void ActiveUI(GameObject uiObject, bool isOn)
@@ -72,7 +77,6 @@ public class UIManager : Singleton<UIManager>
     public GameObject LoadUI(GameObject uiObject)
     {
         GameObject loadedUI = Instantiate(uiObject, UICanvas.transform);
-        loadedUI.SetActive(false);
 
         return loadedUI;
     }

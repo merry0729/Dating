@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject sceneControlManagerPrefab;
     public GameObject objectPoolManagerPrefab;
     public GameObject conversationManagerPrefab;
+    public GameObject settingManagerPrefab;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class GameManager : Singleton<GameManager>
             Instantiate(sceneControlManagerPrefab, transform);
             Instantiate(objectPoolManagerPrefab, transform);
             Instantiate(conversationManagerPrefab, transform);
+            Instantiate(settingManagerPrefab, transform);
 
             LoadTablesAll();
         }
@@ -29,6 +31,8 @@ public class GameManager : Singleton<GameManager>
             Destroy(gameObject);
         }
     }
+
+    #region [ Json Data Table Load ]
 
     public static bool IsTableAllLoaded { get; private set; } = false;
     public static bool IsTableDependancyLoaded { get; private set; } = false;
@@ -67,4 +71,8 @@ public class GameManager : Singleton<GameManager>
         IsTableNormalSizeLoaded = true;
         IsTableHeavySizeLoaded = true;
     }
+
+    #endregion
+
+
 }

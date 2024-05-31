@@ -82,3 +82,13 @@ public enum CharScaleType
 }
 
 #endregion
+
+#region [ Setting ]
+
+public enum SettingType
+{ 
+    Video = 1,
+    Sound,
+}
+
+#endregion

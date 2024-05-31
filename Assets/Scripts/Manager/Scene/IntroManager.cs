@@ -48,8 +48,6 @@ public class IntroManager : MonoBehaviour
 
     void OnClickSetting()
     {
-        Debug.Log($"OnClickSetting");
-
         UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, true);
     }
 

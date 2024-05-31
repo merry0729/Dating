@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7425288733938417601
+--- !u!1 &4549489603979925536
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 561244892284895742}
-  - component: {fileID: 4355341882645437925}
+  - component: {fileID: 2080141888298474640}
+  - component: {fileID: 4361260610306916027}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: SettingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &561244892284895742
+--- !u!4 &2080141888298474640
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425288733938417601}
+  m_GameObject: {fileID: 4549489603979925536}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4355341882645437925
+--- !u!114 &4361260610306916027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425288733938417601}
+  m_GameObject: {fileID: 4549489603979925536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6735cfac805365045a917c243d8045f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 36ce404fced03c346b8cbf0112432c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvasPrefab: {fileID: 5019599015289044920, guid: ed8ee2fc37efa334aad2f25ad2733204, type: 3}
-  UIParent: {fileID: 0}
-  settingUIPrefab: {fileID: 5959021712122099906, guid: 55652dbfe53f220408cb5673b27db573, type: 3}
-  introUIPrefab: {fileID: 3551729660942049759, guid: d718ed2d495059d49b5e0fbd4fc41889, type: 3}
-  playUIPrefab: {fileID: 8992470934578374913, guid: 908a54e8a226b0e429bed246b4acb6c7, type: 3}
