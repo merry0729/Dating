@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,10 @@ public class ConversationManager : Singleton<ConversationManager>
     Vector3 bottomPos;
 
     Dictionary<PoolingObject, UIConversation> conversationDic = new Dictionary<PoolingObject, UIConversation>();
+    public Dictionary<CharType, string> charTypeDic = new Dictionary<CharType, string>();
 
-    Queue<UIConversation> conversationQueue = new Queue<UIConversation>();
+    public Queue<UIConversation> conversationQueue = new Queue<UIConversation>();
+    public UIConversation holdConversation;
     UIConversation currentUICon;
 
     ConversationTable conTable;
@@ -23,7 +26,13 @@ public class ConversationManager : Singleton<ConversationManager>
 
     private void Awake()
     {
+        Init();
+    }
 
+    private void Init()
+    {
+        for (int index = 0; index < Enum.GetValues(typeof(CharType)).Length; index++)
+            charTypeDic.Add((CharType)index, ((CharType)index).ToString());
     }
 
     private void Start()
@@ -77,13 +86,32 @@ public class ConversationManager : Singleton<ConversationManager>
 
         conversationQueue.Enqueue(uiConversation);
 
+        if (currentConData.Hold)
+        {
+            holdConversation = uiConversation;
+            holdConversation.Hold(true);
+        }
+
+        if (currentConData.RemoveHold)
+        {
+            holdConversation.EnablePoolObject();
+            holdConversation.Hold(false);
+        }
+
         return uiConversation;
     }
 
     void EnableConversation()
     {
         if (conversationQueue.Count > 0)
-            conversationQueue.Dequeue().EndConversation();
+            conversationQueue.Peek().EndConversation();
+    }
+
+    public void DeqConversation()
+    {
+        Debug.Log($"Dequeue: {conversationQueue.Peek().conText.text} / {currentConData.Next}");
+        conversationQueue.Dequeue();
+        ShowConversation(currentConData.Next);
     }
 
     void ConversationDataSetting()
@@ -119,7 +147,7 @@ public class ConversationManager : Singleton<ConversationManager>
         if (Input.GetKeyDown(KeyCode.Space))
             PoolConversation();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Comma))
             EnableConversation();
     }
 }

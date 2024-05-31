@@ -13,6 +13,8 @@ public partial class ConversationData
     public int CharScale;
     public string Text = "";
     public int Next;
+    public bool Hold;
+    public bool RemoveHold;
     
     public static ConversationTable Table;
     public ConversationData ShallowCopy()

@@ -42,14 +42,12 @@ public enum ConSetType
     Pos = 1,
 }
 
-
 public enum ConPosType
 {
     Top,
     Middle,
     Bottom,
 }
-
 
 #endregion
 

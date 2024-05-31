@@ -7,16 +7,68 @@
     "CharPos": 0,
     "CharScale": 1,
     "Text": "Hello",
-    "Next": 2
+    "Next": 2,
+    "Hold": false,
+    "RemoveHold": false
   },
   {
     "Id": 2,
     "Name": "Con_2",
-    "Who": 0,
+    "Who": 1,
     "ConPos": 2,
     "CharPos": 1,
     "CharScale": 2,
     "Text": "Thank",
-    "Next": 3
+    "Next": 3,
+    "Hold": false,
+    "RemoveHold": false
+  },
+  {
+    "Id": 3,
+    "Name": "Con_3",
+    "Who": 2,
+    "ConPos": 1,
+    "CharPos": 2,
+    "CharScale": 1,
+    "Text": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Next": 4,
+    "Hold": true,
+    "RemoveHold": false
+  },
+  {
+    "Id": 4,
+    "Name": "Con_4",
+    "Who": 1,
+    "ConPos": 2,
+    "CharPos": 1,
+    "CharScale": 0,
+    "Text": "When this attacks, restore 4 Health to the hero of the player who buffed it.",
+    "Next": 5,
+    "Hold": false,
+    "RemoveHold": false
+  },
+  {
+    "Id": 5,
+    "Name": "Con_5",
+    "Who": 0,
+    "ConPos": 0,
+    "CharPos": 0,
+    "CharScale": 1,
+    "Text": "Increased Attack.",
+    "Next": 6,
+    "Hold": false,
+    "RemoveHold": false
+  },
+  {
+    "Id": 6,
+    "Name": "Con_6",
+    "Who": 0,
+    "ConPos": 1,
+    "CharPos": 2,
+    "CharScale": 2,
+    "Text": "Also damages the minions next to whomever\nhe attacks.",
+    "Next": 3,
+    "Hold": false,
+    "RemoveHold": true
   }
 ]

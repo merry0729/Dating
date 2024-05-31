@@ -11,7 +11,10 @@ public class Character : MonoBehaviour
 
     Sprite sprite;
 
+    Vector3 currentPostion;
     Vector3 targetPosition;
+
+    Vector3 currentScale;
     Vector3 targetScale;
 
     float duration = 1.0f;
@@ -27,6 +30,10 @@ public class Character : MonoBehaviour
     public void SetCharacter_Sprite()
     {
         spriteRenderer.sprite = sprite;
+
+        elapsedTime = 0f;
+        Time.timeScale = 1f;  // Ensure time scale is normal
+        Application.targetFrameRate = 60;
     }
 
     public void SetCharacter_Pos(CharPosType posType)
@@ -52,9 +59,29 @@ public class Character : MonoBehaviour
 
     public void UpdateTrans(Vector3 pos, Vector3 scale)
     {
-        targetPosition = pos;
-        targetScale = scale;
+        if (isTrans)
+            MoveEnd();
+
         isTrans = true;
+        currentPostion = transform.localPosition;
+        targetPosition = pos;
+        currentScale = transform.localScale;
+        targetScale = scale;
+    }
+
+    void MoveStart()
+    {
+        float t = elapsedTime / duration;
+        transform.localPosition = Vector3.Lerp(currentPostion, targetPosition, t);
+        transform.localScale = Vector3.Lerp(currentScale, targetScale, t);
+    }
+
+    void MoveEnd()
+    {
+        transform.localPosition = targetPosition;
+        transform.localScale = targetScale;
+        elapsedTime = 0f;
+        isTrans = false;
     }
 
     private void Update()
@@ -63,20 +90,10 @@ public class Character : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
 
-            // 경과 시간이 duration을 초과하지 않은 경우 위치를 업데이트
             if (elapsedTime < duration)
-            {
-                float t = elapsedTime / duration;
-                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, t);
-                transform.localScale = Vector3.Lerp(transform.localScale, targetScale, t);
-            }
+                MoveStart();
             else
-            {
-                // 이동이 완료된 경우 정확히 목표 위치로 설정하고 이동 종료
-                transform.localPosition = targetPosition;
-                transform.localScale = targetScale;
-                isTrans = false;
-            }
+                MoveEnd();
         }
     }
 }
