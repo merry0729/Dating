@@ -29,3 +29,5 @@ Dating Simulation
 [ 2024.05.29 ] Json 데이터 테이블 자동 생성, Json 데이터 직렬화, Json 데이터 적용, 2D 오브젝트 이동 및 변형 작업
 
 [ 2024.05.29 ] 인트로 씬 Background 수정, 대화창 이름 추가, 대화창 유지 기능 적용, 타이핑 애니메이션 텍스트 적용, 대화 테이블 데이터 추가
+
+[ 2024.05.30 ] Setting UI 추가 작업중, Setting Table Data 추가
