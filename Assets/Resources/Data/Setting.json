@@ -1,41 +1,43 @@
 ﻿[
   {
-    "Id": 1,
+    "Id": 0,
     "Name": "Video",
     "Type": 0,
-    "Setting": [
+    "MainOption": [ "Resolution", "ScreenMode" ],
+    "OptionDetails": [
+      [ "800*600", "1920*1080", "2560*1440" ],
+      [ "FullScreen", "Window" ]
+    ]
+  },
+  {
+    "Id": 1,
+    "Name": "Sound",
+    "Type": 1,
+    "OptionDetails": [
       [ "800*600", "1920*1080", "2560*1440" ]
     ]
   },
   {
     "Id": 2,
-    "Name": "Sound",
-    "Type": 1,
-    "Setting": [
+    "Name": "ETC",
+    "Type": 2,
+    "OptionDetails": [
       [ "800*600", "1920*1080", "2560*1440" ]
     ]
   },
   {
     "Id": 3,
     "Name": "ETC",
-    "Type": 2,
-    "Setting": [
+    "Type": 3,
+    "OptionDetails": [
       [ "800*600", "1920*1080", "2560*1440" ]
     ]
   },
   {
     "Id": 4,
     "Name": "ETC",
-    "Type": 3,
-    "Setting": [
-      [ "800*600", "1920*1080", "2560*1440" ]
-    ]
-  },
-  {
-    "Id": 5,
-    "Name": "ETC",
     "Type": 4,
-    "Setting": [
+    "OptionDetails": [
       [ "800*600", "1920*1080", "2560*1440" ]
     ]
   }

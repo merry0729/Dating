@@ -8,7 +8,8 @@ public partial class SettingData
     public int Id;
     public string Name = "";
     public int Type;
-    public string [][] Setting;
+    public string [] MainOption;
+    public string [][] OptionDetails;
     
     public static SettingTable Table;
     public SettingData ShallowCopy()

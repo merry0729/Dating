@@ -1,6 +1,6 @@
 ﻿[
   {
-    "Id": 1,
+    "Id": 0,
     "Name": "Char_Pos",
     "Type": 0,
     "Vec": [
@@ -10,7 +10,7 @@
     ]
   },
   {
-    "Id": 2,
+    "Id": 1,
     "Name": "Char_Scale",
     "Type": 1,
     "Vec": [

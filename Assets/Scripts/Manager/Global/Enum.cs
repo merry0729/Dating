@@ -63,7 +63,7 @@ public enum CharType
 
 public enum CharDataType
 {
-    Pos = 1,
+    Pos,
     Scale,
 }
 
@@ -87,8 +87,27 @@ public enum CharScaleType
 
 public enum SettingType
 { 
-    Video = 1,
+    Video,
     Sound,
+}
+
+public enum DropDownType
+{ 
+    Resolution,
+    ScreenMode,
+}
+
+public enum ResolutionType
+{
+    W800_H600,
+    W1920_H1080,
+    W2560_H1440,
+}
+
+public enum ScreenType
+{
+    FullScreen,
+    WindowScreen,
 }
 
 #endregion

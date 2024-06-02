@@ -31,6 +31,9 @@ public class SettingManager : Singleton<SettingManager>
     TextMeshProUGUI resolutionText;
     TMP_Dropdown resolutionDrop;
 
+    TextMeshProUGUI screenModeText;
+    TMP_Dropdown screenModeDrop;
+
     #endregion
 
     #region [ Sound Setting ]
@@ -42,8 +45,6 @@ public class SettingManager : Singleton<SettingManager>
     SettingTable settingTable;
     SettingData videoData;
     SettingData soundData;
-    
-
 
     private void Awake()
     {
@@ -52,9 +53,8 @@ public class SettingManager : Singleton<SettingManager>
 
     private void Start()
     {
-        settingTable = SettingData.Table;
-        videoData = settingTable.TryGet((int)SettingType.Video);
-        soundData = settingTable.TryGet((int)SettingType.Sound);
+        SetTable();
+        SetOption();
     }
 
     private void OnDestroy()
@@ -86,9 +86,9 @@ public class SettingManager : Singleton<SettingManager>
         soundBtn.OnClick += () => OnClickSetting(SettingType.Sound);
         exitBtn.OnClick += OnClickExit;
 
-        UIManager.Instance.WindowOpenAction += (type, isOn) => 
-        { 
-            if (type == WindowUIType.SettingUI && isOn) 
+        UIManager.Instance.WindowOpenAction += (type, isOn) =>
+        {
+            if (type == WindowUIType.SettingUI && isOn)
                 OnClickSetting(SettingType.Video);
         };
 
@@ -96,12 +96,22 @@ public class SettingManager : Singleton<SettingManager>
 
         #region [ Video Setting Init ]
 
+        resolutionText = videoWindow.Find($"Resolution").Find($"Text (TMP)").GetComponent<TextMeshProUGUI>();
         resolutionDrop = videoWindow.Find($"Resolution").Find($"Resolution_Dropdown").GetComponent<TMP_Dropdown>();
-        resolutionDrop.onValueChanged.AddListener(OnDropDownValueChanged);
+
+        screenModeText = videoWindow.Find($"ScreenMode").Find($"Text (TMP)").GetComponent<TextMeshProUGUI>();
+        screenModeDrop = videoWindow.Find($"ScreenMode").Find($"ScreenMode_Dropdown").GetComponent<TMP_Dropdown>();
 
         #endregion
 
         UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, false);
+    }
+
+    void SetTable()
+    {
+        settingTable = SettingData.Table;
+        videoData = settingTable.TryGet((int)SettingType.Video);
+        soundData = settingTable.TryGet((int)SettingType.Sound);
     }
 
     void OpenWindow(SettingType settingType)
@@ -129,6 +139,20 @@ public class SettingManager : Singleton<SettingManager>
         UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, false);
     }
 
+    void SetOption()
+    {
+        Debug.Log($"videoData.OptionDetails[(int)SettingType.Video] : {videoData.OptionDetails[(int)SettingType.Video].Length}");
+        Debug.Log($"videoData.OptionDetails[(int)SettingType.Video] : {videoData.OptionDetails[(int)SettingType.Video][0]}");
+
+        resolutionText.text = videoData.MainOption[(int)DropDownType.Resolution];
+        resolutionDrop.onValueChanged.AddListener(delegate { OnDropDownValueChanged(DropDownType.Resolution); });
+        AddOptions(resolutionDrop, videoData.OptionDetails[(int)DropDownType.Resolution]);
+        
+        screenModeText.text = videoData.MainOption[(int)DropDownType.ScreenMode];
+        screenModeDrop.onValueChanged.AddListener(delegate { OnDropDownValueChanged(DropDownType.ScreenMode); });
+        AddOptions(screenModeDrop, videoData.OptionDetails[(int)DropDownType.ScreenMode]);
+    }
+
     void AddOptions(TMP_Dropdown dropDown, string[] optionTexts)
     {
         foreach (string optionText in optionTexts)
@@ -137,11 +161,31 @@ public class SettingManager : Singleton<SettingManager>
             newOption.text = optionText;
             dropDown.options.Add(newOption);
         }
-
     }
 
-    void OnDropDownValueChanged(int value)
+    void OnDropDownValueChanged(DropDownType ddType)
     {
+        TMP_Dropdown dd = null;
 
+        switch(ddType)
+        {
+            case DropDownType.Resolution:
+                dd = resolutionDrop;
+
+                if (dd.value == (int)ResolutionType.W800_H600)
+                    Screen.SetResolution(800, 600, true);
+                else if (dd.value == (int)ResolutionType.W1920_H1080)
+                    Screen.SetResolution(1920, 1080, true);
+                else if (dd.value == (int)ResolutionType.W2560_H1440)
+                    Screen.SetResolution(2560, 1440, true);
+                break;
+
+            case DropDownType.ScreenMode:
+                if (dd.value == (int)ScreenType.FullScreen)
+                    Screen.fullScreen = true;
+                else if (dd.value == (int)ScreenType.WindowScreen)
+                    Screen.fullScreen = false;
+                break;
+        }
     }
 }
