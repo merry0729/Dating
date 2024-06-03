@@ -13,8 +13,8 @@ public class SceneControlManager : Singleton<SceneControlManager>
 
     private GameObject currentSceneManager;
 
-    Dictionary<SceneType, GameObject> sceneManagerDic = new Dictionary<SceneType, GameObject>();
-    Dictionary<SceneType, string> sceneTypeStrDic = new Dictionary<SceneType, string>();
+    SerializableDictionary<SceneType, GameObject> sceneManagerDic = new SerializableDictionary<SceneType, GameObject>();
+    SerializableDictionary<SceneType, string> sceneTypeStrDic = new SerializableDictionary<SceneType, string>();
    
     private void Awake()
     {

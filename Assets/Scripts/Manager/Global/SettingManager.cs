@@ -7,8 +7,8 @@ using TMPro;
 
 public class SettingManager : Singleton<SettingManager>
 {
-
     #region [ Setting Base ]
+    
     SettingType currentSettingType = SettingType.Video;
 
     GameObject settingUI;
@@ -19,7 +19,7 @@ public class SettingManager : Singleton<SettingManager>
     public UIButton soundBtn;
     public UIButton exitBtn;
 
-    Dictionary<SettingType, GameObject> settingWindowDic = new Dictionary<SettingType, GameObject>();
+    public SerializableDictionary<SettingType, GameObject> settingWindowDic = new SerializableDictionary<SettingType, GameObject>();
 
     public Transform videoWindow;
     public Transform soundWindow;
@@ -181,6 +181,8 @@ public class SettingManager : Singleton<SettingManager>
                 break;
 
             case DropDownType.ScreenMode:
+                dd = screenModeDrop;
+
                 if (dd.value == (int)ScreenType.FullScreen)
                     Screen.fullScreen = true;
                 else if (dd.value == (int)ScreenType.WindowScreen)

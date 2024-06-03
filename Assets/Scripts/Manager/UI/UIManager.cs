@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    Dictionary<SceneType, GameObject> sceneUIPrefab = new Dictionary<SceneType, GameObject>();
+    SerializableDictionary<SceneType, GameObject> sceneUIPrefab = new SerializableDictionary<SceneType, GameObject>();
 
     [Header("[ UI Root ]")]
     public GameObject UICanvasPrefab;

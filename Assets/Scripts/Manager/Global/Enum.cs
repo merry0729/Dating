@@ -111,3 +111,15 @@ public enum ScreenType
 }
 
 #endregion
+
+#region [ Sound ]
+
+public enum SoundType
+{
+    Master,
+    BGM,
+    Voice,
+    SFX,
+}
+
+#endregion

@@ -5,7 +5,12 @@
     "Type": 0,
     "MainOption": [ "Resolution", "ScreenMode" ],
     "OptionDetails": [
-      [ "800*600", "1920*1080", "2560*1440" ],
+      [
+        "800*600",
+        "1024*768",
+        "1920*1080",
+        "2560*1440"
+      ],
       [ "FullScreen", "Window" ]
     ]
   },
@@ -13,6 +18,12 @@
     "Id": 1,
     "Name": "Sound",
     "Type": 1,
+    "MainOption": [
+      "Master",
+      "Background",
+      "Voice",
+      "SFX"
+    ],
     "OptionDetails": [
       [ "800*600", "1920*1080", "2560*1440" ]
     ]

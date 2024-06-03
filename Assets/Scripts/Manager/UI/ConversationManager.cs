@@ -9,8 +9,8 @@ public class ConversationManager : Singleton<ConversationManager>
     Vector3 middlePos;
     Vector3 bottomPos;
 
-    Dictionary<PoolingObject, UIConversation> conversationDic = new Dictionary<PoolingObject, UIConversation>();
-    public Dictionary<CharType, string> charTypeDic = new Dictionary<CharType, string>();
+    SerializableDictionary<PoolingObject, UIConversation> conversationDic = new SerializableDictionary<PoolingObject, UIConversation>();
+    public SerializableDictionary<CharType, string> charTypeDic = new SerializableDictionary<CharType, string>();
 
     public Queue<UIConversation> conversationQueue = new Queue<UIConversation>();
     public UIConversation holdConversation;
@@ -42,9 +42,7 @@ public class ConversationManager : Singleton<ConversationManager>
 
     public void StartConversation()
     {
-        currentConData = conTable.TryGet(currentId);
-        PoolConversation().UpdateConversation(currentConData);
-        PlayManager.Instance.SetChracter(currentConData.Who, currentConData.CharPos, currentConData.CharScale);
+        ShowConversation(currentId);
     }
 
     public void ShowConversation(int index)
