@@ -50,6 +50,7 @@ MonoBehaviour:
   sceneControlManagerPrefab: {fileID: 212199013645294894, guid: 8e769295ccaf0f6468c1c42598e76423, type: 3}
   objectPoolManagerPrefab: {fileID: 6444665543669009165, guid: 775d83fd2d0f1864ab09db1e9871e4d7, type: 3}
   conversationManagerPrefab: {fileID: 7505874903980060577, guid: 6dc5c6b156f7f7647bffab9e9969aae4, type: 3}
+  soundManagerPrefab: {fileID: 5532070782184262724, guid: a551fafaa3bcba54c98f2c7d994689a2, type: 3}
   settingManagerPrefab: {fileID: 4549489603979925536, guid: 3d097d2859a94a04aa7ae8f92eab47fe, type: 3}
 --- !u!1 &6684156847164689004
 GameObject:

@@ -2895,7 +2895,7 @@ GameObject:
   - component: {fileID: 2614905099223255782}
   - component: {fileID: 2315156252783469821}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SFX Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1479036646913123574}
   m_HandleRect: {fileID: 4545054389831240516}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -3578,7 +3578,7 @@ GameObject:
   - component: {fileID: 3330954901332910636}
   - component: {fileID: 5836767050847342929}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: BGM Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3650,7 +3650,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 8962351276444332957}
   m_HandleRect: {fileID: 8029824251049163140}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -4607,7 +4607,7 @@ GameObject:
   - component: {fileID: 2139758547127785975}
   - component: {fileID: 3716562125888864975}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Voice Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 5762332927789134071}
   m_HandleRect: {fileID: 92797317783248094}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -8318,7 +8318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5357075468630610286}
   m_Layer: 5
-  m_Name: Background Volume
+  m_Name: BGM Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10032,7 +10032,7 @@ GameObject:
   - component: {fileID: 628631634665332983}
   - component: {fileID: 2748986545867113123}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Master Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10104,7 +10104,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 171847198070073620}
   m_HandleRect: {fileID: 2697378064976327014}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1

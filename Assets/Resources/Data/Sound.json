@@ -1,0 +1,35 @@
+﻿[
+  {
+    "Id": 0,
+    "Name": "Sound",
+    "Type": 1,
+    "SoundType": "Opening_0",
+    "SoundFileName": "Opening_0_SellBuyMusic - 해변의 저녁"
+  },
+  {
+    "Id": 1,
+    "Name": "Sound",
+    "Type": 1,
+    "SoundType": "Ending_0",
+    "SoundFileName": "Ending_0_배달의민족 - 거의 다 왔어요"
+  },
+  {
+    "Id": 2,
+    "Name": "Sound",
+    "Type": 3,
+    "SoundType": "Enter_0",
+    "SoundFileName": "Enter_0_SFX_UI_Click_Organic_Plastic_Select_2"
+  },
+  {
+    "Id": 3,
+    "Name": "Sound",
+    "Type": 3,
+    "SoundType": "Click_0",
+    "SoundFileName": "Click_0_SFX_UI_Click_Designed_Scifi_Dirty_Negative_1"
+  },
+  {
+    "Id": 4,
+    "Name": "Sound",
+    "Type": 4
+  }
+]

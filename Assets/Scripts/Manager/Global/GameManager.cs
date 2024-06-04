@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject sceneControlManagerPrefab;
     public GameObject objectPoolManagerPrefab;
     public GameObject conversationManagerPrefab;
+    public GameObject soundManagerPrefab;
     public GameObject settingManagerPrefab;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
             Instantiate(sceneControlManagerPrefab, transform);
             Instantiate(objectPoolManagerPrefab, transform);
             Instantiate(conversationManagerPrefab, transform);
+            Instantiate(soundManagerPrefab, transform);
             Instantiate(settingManagerPrefab, transform);
 
             LoadTablesAll();

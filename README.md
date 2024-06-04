@@ -6,6 +6,8 @@ Dating Simulation
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.04 ] Audio Mixer 작업, Sound Setting 적용(Master, BGM, SFX), BGM / UI SFX 추가, Sound Play
+
 [ 2024.06.03 ] Sound Table 수정, Audio Mixer 생성, Sound Manager에 Audio Mixer 등록, SerializableDictionary 클래스 생성
 
 [ 2024.06.02 ] Video Setting (UI 생성, 테이블, 코드 적용), Sound Setting (UI 생성)
