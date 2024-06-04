@@ -1,7 +1,11 @@
-# Dating
-Dating Simulation
+# 🐱‍🏍Dating
+### 🎮Dating Simulation
 
-2024.05.20 ~
+#### 🖊 C#
+
+#### 🛠 Unity Engine
+
+#### 2024.05.20 ~
 
 
 [ ----- 진행사항 ----- ]
