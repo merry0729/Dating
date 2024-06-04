@@ -211,11 +211,11 @@ public class SettingManager : Singleton<SettingManager>
         {
             case DropDownType.Resolution:
                 if (dd.value == (int)ResolutionType.W800_H600)
-                    Screen.SetResolution(800, 600, true);
+                    Screen.SetResolution(800, 600, Screen.fullScreen);
                 else if (dd.value == (int)ResolutionType.W1920_H1080)
-                    Screen.SetResolution(1920, 1080, true);
+                    Screen.SetResolution(1920, 1080, Screen.fullScreen);
                 else if (dd.value == (int)ResolutionType.W2560_H1440)
-                    Screen.SetResolution(2560, 1440, true);
+                    Screen.SetResolution(2560, 1440, Screen.fullScreen);
                 break;
 
             case DropDownType.ScreenMode:
@@ -225,6 +225,10 @@ public class SettingManager : Singleton<SettingManager>
                     Screen.fullScreen = false;
                 break;
         }
+
+        Debug.Log($"dd : {dd.name} / {ddType}");
+        Debug.Log($"resolution : {Screen.width} / {Screen.height}");
+        Debug.Log($"resolution : {Screen.currentResolution}");
     }
 
     void OnSliderValueChanged(Slider slider, SoundType type)

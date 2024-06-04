@@ -48,13 +48,14 @@ using System.Threading.Tasks;
 
             ++_tableLoadingCount;
 
-            TextAsset asset;
-#if UNITY_EDITOR
+            TextAsset asset = null;
+        //#if UNITY_EDITOR
         //if (!Application.isPlaying)
-        asset = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/Resources/Data/{tableName}.json");
+        //asset = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>($"Assets/Resources/Data/{tableName}.json");
+        asset = Resources.Load<TextAsset>($"Data/{tableName}");
         Debug.Log($"asset.text : {asset.text}");
 
-#endif
+//#endif
 
         table.Load(new TemplateTableJsonLoader<int, T>(
                 new JsonTextReader(new StringReader(asset.text)), JsonSerializer.Create(), delayLoad));

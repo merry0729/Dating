@@ -1,10 +1,16 @@
-# Dating
-Dating Simulation
+# 🐱‍🏍Dating
+### 🎮Dating Simulation
 
-2024.05.20 ~
+#### 🖊 C#
+
+#### 🛠 Unity Engine
+
+#### 2024.05.20 ~
 
 
 [ ----- 진행사항 ----- ]
+
+[ 2024.06.05 ] Build Test, Resolution 작업, ScreenMode 작업, 테스트 더 필요함
 
 [ 2024.06.04 ] Audio Mixer 작업, Sound Setting 적용(Master, BGM, SFX), BGM / UI SFX 추가, Sound Play
 
@@ -37,30 +43,3 @@ Dating Simulation
 [ 2024.05.21 ] 커스텀 버튼 작업
 
 [ 2024.05.20 ] 프로젝트 생성 및 세팅
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
