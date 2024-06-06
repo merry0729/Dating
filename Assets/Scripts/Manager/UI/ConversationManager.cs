@@ -142,10 +142,7 @@ public class ConversationManager : Singleton<ConversationManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            PoolConversation();
-
-        if (Input.GetKeyDown(KeyCode.Comma))
+        if (Input.GetMouseButtonDown(0))
             EnableConversation();
     }
 }

@@ -10,6 +10,8 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.06 ] Play UI 수정, 대화 Input 수정
+
 [ 2024.06.05 ] Build Test, Resolution 작업, ScreenMode 작업, 테스트 더 필요함
 
 [ 2024.06.04 ] Audio Mixer 작업, Sound Setting 적용(Master, BGM, SFX), BGM / UI SFX 추가, Sound Play
