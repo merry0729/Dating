@@ -6,10 +6,13 @@ using Cysharp.Threading.Tasks;
 public class PlayManager : Singleton<PlayManager>
 {
     public GameObject playObjectPrefab;
-    public GameObject playObject;
+    private GameObject playObject;
 
-    public Background illust_Background;
-    public Character illust_Character_Main;
+    private Background illust_Background;
+
+    #region [ Character Declare ]
+
+    private Character illust_Character_Main;
 
     public CharacterSettingTable characterSettingTable;
     public CharacterSettingData characterSettingData;
@@ -17,21 +20,28 @@ public class PlayManager : Singleton<PlayManager>
     List<Vector3> charPosList = new List<Vector3>();
     List<Vector3> charScaleList = new List<Vector3>();
 
-    public Vector3 character_LeftPos;
-    public Vector3 character_CenterPos;
-    public Vector3 character_RightPos;
+    #endregion
 
-    public Vector3 character_DownScale;
-    public Vector3 character_NormalScale;
-    public Vector3 character_UpScale;
+    #region [ Options Declare ]
+
+    private OptionsTable optionsTable;
+    private OptionsData optionsData;
+
+    public GameObject uiOptionPrefab;
+    private Transform optionParent;
+    private Transform optionBackground;
+    public List<UIOptions> optionsList = new List<UIOptions>();
+
+    int currentOptionIndex = 0;
+
+    #endregion
+
 
     private void Awake()
     {
-        playObject = Instantiate(playObjectPrefab);
+        optionsTable = OptionsData.Table;
 
-        illust_Background = playObject.transform.Find("Illust_Background").GetComponent<Background>();
-        illust_Character_Main = playObject.transform.Find("Illust_Character_Main").GetComponent<Character>();
-
+        SetPlayObject();
         SetCharacterSettingData();
     }
 
@@ -45,10 +55,30 @@ public class PlayManager : Singleton<PlayManager>
         ConversationManager.Instance.StartConversation();
     }
 
+    void SetPlayObject()
+    {
+        playObject = Instantiate(playObjectPrefab);
+        illust_Background = playObject.transform.Find("Illust_Background").GetComponent<Background>();
+        illust_Character_Main = playObject.transform.Find("Illust_Character_Main").GetComponent<Character>();
+    }
+
+    public void SetPlayUI()
+    {
+        optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
+        optionBackground = optionParent.Find("Option_Background").transform;
+    }
+
+
+    #region [ Background ]
+
     public void SetBackground()
     {
 
     }
+
+    #endregion
+
+    #region [ Character ]
 
     public void SetChracter(int charIndex, int posIndex, int scaleIndex)
     {
@@ -108,9 +138,53 @@ public class PlayManager : Singleton<PlayManager>
                                       characterSettingData.Vec[(int)CharScaleType.Up][2]));
     }
 
+    #endregion
+
+    #region [ Option ]
+
+    void SetOptions(int optionIndex)
+    {
+        Debug.Log($"optionIndex : {optionIndex}");
+
+        optionParent.gameObject.SetActive(true);
+
+        optionsData = optionsTable.TryGet(optionIndex);
+        int optionsCount = optionsData.Options.Length;
+
+        if(optionsList.Count > 0)
+        {
+            for(int index = 0; index < optionsList.Count; index++)
+            {
+                if (optionsList[index].gameObject.activeSelf)
+                    optionsList[index].gameObject.SetActive(false);
+            }
+        }
+
+        if (optionsList.Count < optionsCount)
+        {
+            int createCount = optionsCount - optionsList.Count;
+
+            for(int index = 0; index < createCount; index++)
+            {
+                optionsList.Add(Instantiate(uiOptionPrefab, optionBackground).GetComponent<UIOptions>());
+            }
+        }
+
+        for (int index = 0; index < optionsCount; index++)
+        {
+            optionsList[index].gameObject.SetActive(true);
+            optionsList[index].ShowOptions(optionsData, index);
+        }
+    }
+    
+    #endregion
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
             PlayStart();
+
+        if (Input.GetKeyDown(KeyCode.O))
+            SetOptions(currentOptionIndex++);
     }
 }

@@ -10,8 +10,16 @@ public class UIManager : Singleton<UIManager>
     [Header("[ UI Root ]")]
     public GameObject UICanvasPrefab;
     private GameObject UICanvas;
-    public Transform UIParent;
-    
+    public Transform sceneUI;
+
+    [Header("[ UI Play ]")]
+    public GameObject playUI;
+    public GameObject optionsUI;
+    public GameObject characterPlayingUI;
+
+    [Header("[ UI Resolution ]")]
+    public List<RectTransform> resolutionRect;
+
     public GameObject settingUIObj;
     public GameObject currentSceneUI;
 
@@ -38,6 +46,12 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+            ScreenTransform();
+    }
+
     private void Init()
     {
         if (UICanvas == null)
@@ -46,8 +60,12 @@ public class UIManager : Singleton<UIManager>
             DontDestroyOnLoad(UICanvas);
         }
 
-        if (UIParent == null)
-            UIParent = UICanvas.transform.Find("SceneUI").transform;
+        if (sceneUI == null)
+        {
+            sceneUI = UICanvas.transform.Find("SceneUI").transform;
+            
+        }
+
 
         sceneUIPrefab.Add(SceneType.IntroScene, introUIPrefab);
         sceneUIPrefab.Add(SceneType.PlayScene, playUIPrefab);
@@ -86,11 +104,37 @@ public class UIManager : Singleton<UIManager>
         if (currentSceneUI != null)
             Destroy(currentSceneUI);
 
-        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], UIParent.transform);
+        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], sceneUI.transform);
+
+        if(resolutionRect.Count > 0)
+            resolutionRect.Clear();
+
+        resolutionRect.Add(sceneUI.GetComponent<RectTransform>());
+        resolutionRect.Add(currentSceneUI.GetComponent<RectTransform>());
+
+        if (sceneType == SceneType.IntroScene)
+        {
+            IntroManager.Instance.SetIntroUI();
+
+            //resolutionRect.Add();
+        }
+        else if(sceneType == SceneType.PlayScene)
+        {
+            PlayManager.Instance.SetPlayUI();
+
+            resolutionRect.Add(currentSceneUI.transform.Find("Options").GetComponent<RectTransform>());
+            resolutionRect.Add(currentSceneUI.transform.Find("CharacterPlaying").GetComponent<RectTransform>());
+        }
     }
 
     public GameObject GetCurrentSceneUI()
     {
         return currentSceneUI;
+    }
+
+    public void ScreenTransform()
+    {
+        //UIParentRect.sizeDelta = new Vector2(Screen.width, Screen.height);
+        //UIParentRect.sizeDelta = new Vector2(2560, 1920);
     }
 }

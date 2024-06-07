@@ -83,6 +83,18 @@ public enum CharScaleType
 
 #endregion
 
+#region [ Options ]
+
+public enum OptionType
+{ 
+    Positive,
+    Negative,
+    Neutral,
+    Non_Response,
+}
+
+#endregion
+
 #region [ Setting ]
 
 public enum SettingType
@@ -123,3 +135,4 @@ public enum SoundType
 }
 
 #endregion
+

@@ -59,13 +59,14 @@ public class SettingManager : Singleton<SettingManager>
     private void Awake()
     {
         Init();
+        SetTable();
+        SetVideoOption();
+        SetSoundOption();
     }
 
     private void Start()
     {
-        SetTable();
-        SetVideoOption();
-        SetSoundOption();
+  
     }
 
     private void OnDestroy()

@@ -63,6 +63,12 @@ public class SerializableDictionary <TKey, TValue> : ISerializationCallbackRecei
         return dictionary.ContainsKey(key);
     }
 
+    public void Clear()
+    {
+        keys.Clear();
+        values.Clear();
+    }
+
     public int Count => dictionary.Count;
 
     public TValue this[TKey key]

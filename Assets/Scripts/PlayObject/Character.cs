@@ -36,27 +36,6 @@ public class Character : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    public void SetCharacter_Pos(CharPosType posType)
-    {
-        characterPosType = posType;
-
-        switch(characterPosType)
-        {
-            case CharPosType.Left:
-                rectTransform.anchoredPosition = PlayManager.Instance.character_LeftPos;
-                break;
-            case CharPosType.Center:
-                rectTransform.anchoredPosition = PlayManager.Instance.character_CenterPos;
-                break;
-            case CharPosType.Right:
-                rectTransform.anchoredPosition = PlayManager.Instance.character_RightPos;
-                break;
-            default:
-                rectTransform.anchoredPosition = PlayManager.Instance.character_CenterPos;
-                break;
-        }
-    }
-
     public void UpdateTrans(Vector3 pos, Vector3 scale)
     {
         if (isTrans)

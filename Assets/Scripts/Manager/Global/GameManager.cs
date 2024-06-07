@@ -15,23 +15,29 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        if(_instance == null)
+        TableLoader.OnTableLoadComplete += TableLoadComplete;
+        if (_instance == null)
         {
-            DontDestroyOnLoad(this);
-
-            Instantiate(uiManagerPrefab, transform);
-            Instantiate(sceneControlManagerPrefab, transform);
-            Instantiate(objectPoolManagerPrefab, transform);
-            Instantiate(conversationManagerPrefab, transform);
-            Instantiate(soundManagerPrefab, transform);
-            Instantiate(settingManagerPrefab, transform);
-
             LoadTablesAll();
+            DontDestroyOnLoad(this);
         }
         else
-        {
             Destroy(gameObject);
-        }
+
+    }
+
+    void TableLoadComplete()
+    {
+        Debug.Log($"TableLoader.OnTableLoadComplete");
+
+
+        Instantiate(uiManagerPrefab, transform);
+        Instantiate(sceneControlManagerPrefab, transform);
+        Instantiate(objectPoolManagerPrefab, transform);
+        Instantiate(conversationManagerPrefab, transform);
+        Instantiate(soundManagerPrefab, transform);
+        Instantiate(settingManagerPrefab, transform);
+   
     }
 
     #region [ Json Data Table Load ]

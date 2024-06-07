@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playObjectPrefab: {fileID: 8086071420260130774, guid: 287c3d249d927fb40b0bb004108b528f, type: 3}
+  uiOptionPrefab: {fileID: 1715733174268406658, guid: 31bc17e9aed87604b960d9ca2f645c4e, type: 3}
+  optionsList: []

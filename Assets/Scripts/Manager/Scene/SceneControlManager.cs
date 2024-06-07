@@ -69,8 +69,8 @@ public class SceneControlManager : Singleton<SceneControlManager>
 
     void SceneControl(SceneType sceneType)
     {
-        UIManager.Instance.LoadSceneUI(sceneType);
         LoadSceneManager(sceneType);
+        UIManager.Instance.LoadSceneUI(sceneType);
     }
 
     void LoadSceneManager(SceneType sceneType)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IntroManager : MonoBehaviour
+public class IntroManager : Singleton<IntroManager>
 {
     [Header("[ Button ]")]
     private UIButton startButton;
@@ -12,11 +12,6 @@ public class IntroManager : MonoBehaviour
 
     private string playSceneName = "PlayScene";
 
-    void Awake()
-    {
-        IntroInit();
-    }
-
     private void OnDestroy()
     {
         startButton.OnClick -= OnClickStart;
@@ -24,7 +19,7 @@ public class IntroManager : MonoBehaviour
         exitButton.OnClick -= OnClickExit;
     }
 
-    void IntroInit()
+    public void SetIntroUI()
     {
         if (startButton == null)
             startButton = GameObject.Find("StartBtn").GetComponent<UIButton>();

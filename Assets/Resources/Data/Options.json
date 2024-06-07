@@ -1,0 +1,47 @@
+﻿[
+  {
+    "Id": 0,
+    "Name": "Option_0",
+    "OptionType": [ 0 ],
+    "Options": [ "Option_Pos" ]
+  },
+  {
+    "Id": 1,
+    "Name": "Option_1",
+    "OptionType": [ 1 ],
+    "Options": [ "Option_Neg" ]
+  },
+  {
+    "Id": 2,
+    "Name": "Option_2",
+    "OptionType": [ 0, 1, 3 ],
+    "Options": [
+      "Option_Pos",
+      "Option_Neg",
+      "Option_Non"
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Option_3",
+    "OptionType": [ 3 ],
+    "Options": [ "Option_Non" ]
+  },
+  {
+    "Id": 4,
+    "Name": "Option_4",
+    "OptionType": [ 0, 1, 2, 3 ],
+    "Options": [
+      "Option_Pos",
+      "Option_Neg",
+      "Neutral",
+      "Option_Non"
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": "Option_5",
+    "OptionType": [ 2 ],
+    "Options": [ "Neutral" ]
+  }
+]
