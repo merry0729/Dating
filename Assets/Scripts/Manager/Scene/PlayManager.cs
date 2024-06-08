@@ -173,7 +173,7 @@ public class PlayManager : Singleton<PlayManager>
         for (int index = 0; index < optionsCount; index++)
         {
             optionsList[index].gameObject.SetActive(true);
-            optionsList[index].ShowOptions(optionsData, index);
+            optionsList[index].SetOptionData(optionsData, optionsList.Count, index);
         }
     }
     

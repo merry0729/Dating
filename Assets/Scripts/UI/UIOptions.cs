@@ -5,17 +5,41 @@ using TMPro;
 
 public class UIOptions : MonoBehaviour
 {
+    RectTransform rect;
+
     OptionType optionType;
     public TextMeshProUGUI optionText;
 
+    OptionsData optionsData;
+    int count;
+    int currentIndex;
+
     private void Awake()
     {
+        rect = GetComponent<RectTransform>();
         optionText = transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
     }
 
-    public void ShowOptions(OptionsData optionsData, int index)
+    public void SetOptionData(OptionsData argOptionsData, int fullCount, int index)
     {
-        optionType = (OptionType)optionsData.OptionType[index];
-        optionText.text = optionsData.Options[index];
+        optionsData = argOptionsData;
+        count = fullCount;
+        currentIndex = index;
+
+        ShowOptions();
+    }
+
+    void ShowOptions()
+    {
+        optionType = (OptionType)optionsData.OptionType[currentIndex];
+        optionText.text = optionsData.Options[currentIndex];
+        SetPos();
+    }
+
+    public void SetPos()
+    {
+        rect.anchoredPosition = new Vector2(
+            0,
+            -(Screen.height / (count + 1)) * (currentIndex+1));
     }
 }
