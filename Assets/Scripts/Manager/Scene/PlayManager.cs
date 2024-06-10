@@ -36,6 +36,13 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
+    #region
+
+    public GameObject phoneParent;
+
+
+    #endregion
+
 
     private void Awake()
     {
@@ -66,6 +73,8 @@ public class PlayManager : Singleton<PlayManager>
     {
         optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
         optionBackground = optionParent.Find("Option_Background").transform;
+
+        phoneParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Phone").gameObject;
     }
 
 
@@ -176,7 +185,16 @@ public class PlayManager : Singleton<PlayManager>
             optionsList[index].SetOptionData(optionsData, optionsList.Count, index);
         }
     }
-    
+
+    #endregion
+
+    #region [ Phone ]
+
+    void OpenPhone()
+    {
+        phoneParent.SetActive(true);
+    }
+
     #endregion
 
     private void Update()
@@ -186,5 +204,8 @@ public class PlayManager : Singleton<PlayManager>
 
         if (Input.GetKeyDown(KeyCode.O))
             SetOptions(currentOptionIndex++);
+
+        if (Input.GetKeyDown(KeyCode.P))
+            OpenPhone();
     }
 }

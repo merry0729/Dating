@@ -121,6 +121,7 @@ public class UIManager : Singleton<UIManager>
         else if(sceneType == SceneType.PlayScene)
         {
             PlayManager.Instance.SetPlayUI();
+            PhoneManager.Instance.SetPhoneUI();
 
             resolutionRect.Add(currentSceneUI.transform.Find("Options").GetComponent<RectTransform>());
             resolutionRect.Add(currentSceneUI.transform.Find("CharacterPlaying").GetComponent<RectTransform>());
