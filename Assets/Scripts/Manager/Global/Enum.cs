@@ -83,6 +83,21 @@ public enum CharScaleType
 
 #endregion
 
+#region [ Phone ]
+
+public enum PhoneState
+{
+    Messenger,
+    Idle,
+}
+
+public enum ApplicationType
+{
+    Messenger,
+}
+
+#endregion
+
 #region [ Options ]
 
 public enum OptionType

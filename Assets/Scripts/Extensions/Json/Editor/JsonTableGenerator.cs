@@ -355,7 +355,7 @@ public partial class JsonTableGenerator : ScriptableObject
 						}
 
 						writer._("", "await UniTask.WaitUntil(() => 0 == _tableLoadingCount);");
-						writer._("OnPostLoad();");
+						//writer._("OnPostLoad();");
 						writer._("return true;");
 					}
 					

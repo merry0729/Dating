@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 using TemplateTable;
-[Serializable]
+
 public partial class OptionsData
 {
     public int Id;

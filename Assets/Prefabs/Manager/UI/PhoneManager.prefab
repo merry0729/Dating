@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc27d25bbf77e6640a5c504f49e29495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  applicationPrefab: {fileID: 817206249861963649, guid: 10e1622c3dbe752479c00cc228091b10, type: 3}
+  applicationParent: {fileID: 0}
   messengerParent: {fileID: 0}
   messengerScrollRect_Sender: {fileID: 0}
   messengerContent_Sender: {fileID: 0}

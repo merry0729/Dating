@@ -10,7 +10,7 @@ public class PlayManager : Singleton<PlayManager>
 
     private Background illust_Background;
 
-    #region [ Character Declare ]
+    #region [ Conversation Character Declare ]
 
     private Character illust_Character_Main;
 

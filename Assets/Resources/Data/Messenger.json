@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Con_1",
+    "Who": 0,
+    "Text": "Hello"
+  },
+  {
+    "Id": 2,
+    "Name": "Con_2",
+    "Who": 0,
+    "Text": "Thank"
+  },
+  {
+    "Id": 3,
+    "Name": "Con_3",
+    "Who": 0,
+    "Text": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 4,
+    "Name": "Con_4",
+    "Who": 0,
+    "Text": "When this attacks, restore 4 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 5,
+    "Name": "Con_5",
+    "Who": 0,
+    "Text": "Increased Attack."
+  },
+  {
+    "Id": 6,
+    "Name": "Con_6",
+    "Who": 0,
+    "Text": "Also damages the minions next to whomever he attacks."
+  }
+]

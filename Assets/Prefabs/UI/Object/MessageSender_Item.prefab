@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8404675404427211646}
   - component: {fileID: 513733870027114191}
   m_Layer: 5
-  m_Name: Chracter_Outline
+  m_Name: Character_Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,8 @@ GameObject:
   - component: {fileID: 4379698732290289551}
   - component: {fileID: 4496089183319679746}
   - component: {fileID: 8718173996108840392}
-  - component: {fileID: 1470024506781029629}
+  - component: {fileID: 4585122353358588820}
+  - component: {fileID: 3215061222952740158}
   m_Layer: 5
   m_Name: MessageSender_Item
   m_TagString: Untagged
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1470024506781029629
+--- !u!114 &4585122353358588820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3312771267857926846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: b379b6ce0a8ccde4ab6a6d843ccd2bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -198,6 +199,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  clickType: 0
+  doubleClick: 0
+--- !u!114 &3215061222952740158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312771267857926846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffec6d9745be17247b10971d36747aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  senderIllust: {fileID: 0}
+  senderText: {fileID: 0}
 --- !u!1 &3635215710843263216
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +362,7 @@ GameObject:
   - component: {fileID: 1730227105488824773}
   - component: {fileID: 7551531764769817807}
   m_Layer: 5
-  m_Name: Character_Maskl
+  m_Name: Character_Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

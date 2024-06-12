@@ -26,10 +26,10 @@ public class UIOptions : MonoBehaviour
         count = fullCount;
         currentIndex = index;
 
-        ShowOptions();
+        UpdateOptions();
     }
 
-    void ShowOptions()
+    void UpdateOptions()
     {
         optionType = (OptionType)optionsData.OptionType[currentIndex];
         optionText.text = optionsData.Options[currentIndex];
