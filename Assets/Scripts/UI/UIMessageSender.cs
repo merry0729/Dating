@@ -8,8 +8,21 @@ public class UIMessageSender : MonoBehaviour
 {
     public CharType currentMessageSender;
 
+    UIButton senderBtn;
+
     public Image senderIllust;
     public TextMeshProUGUI senderText;
+
+    private void Awake()
+    {
+        senderBtn = GetComponent<UIButton>();
+        senderBtn.OnClick += OnClickSender;
+    }
+
+    private void OnDestroy()
+    {
+        senderBtn.OnClick -= OnClickSender;
+    }
 
     public void SetMessageSender(int index)
     {
@@ -31,5 +44,10 @@ public class UIMessageSender : MonoBehaviour
         Debug.Log($"UpdateMessageSenderUI");
         //senderIllust.sprite = 
         senderText.text = ConversationManager.Instance.charTypeDic[currentMessageSender];
+    }
+
+    void OnClickSender()
+    {
+        
     }
 }

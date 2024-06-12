@@ -25,6 +25,8 @@ public enum WindowUIType
 public enum PoolType
 {
     Conversation,
+    Message_Sender,
+    Message_Mine,
 }
 
 public enum PoolParentType
@@ -88,7 +90,7 @@ public enum CharScaleType
 public enum PhoneState
 {
     Messenger,
-    Idle,
+    Application,
 }
 
 public enum ApplicationType

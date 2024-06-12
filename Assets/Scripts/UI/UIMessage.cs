@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class UIMessage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PoolType poolType;
+    RectTransform rectTransform;
+
+    private void Awake()
     {
-        
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetPos(PoolType type, Vector2 offset, int messageCount)
     {
-        
+        poolType = type;
+
+        float x = offset.x + 0; 
+        float y = offset.y + (rectTransform.sizeDelta.y * messageCount - 1) + (20 * messageCount - 1);
+
+        if(poolType == PoolType.Message_Mine)
+        {
+            rectTransform.anchoredPosition = new Vector2(x, y);
+        }
+        else if (poolType == PoolType.Message_Sender)
+        {
+            rectTransform.anchoredPosition = new Vector2(x, y);
+        }
     }
 }

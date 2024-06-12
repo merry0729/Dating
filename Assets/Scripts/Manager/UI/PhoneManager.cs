@@ -6,37 +6,33 @@ using UnityEngine.UI;
 
 public class PhoneManager : Singleton<PhoneManager>
 {
-    public PhoneState phoneState = PhoneState.Idle;
+    public PhoneState phoneState = PhoneState.Application;
+
+    public Stack<(PhoneState, GameObject)> openLayerTuStack = new Stack<(PhoneState, GameObject)>();
+    public Stack<(PhoneState, GameObject)> closeLayerTuStack = new Stack<(PhoneState, GameObject)>();
 
     #region [ Application ]
 
     [Header("[ Application ]")]
     public GameObject applicationPrefab;
-
     public Transform applicationParent;
+    GameObject currentApplicationParent;
 
     #endregion
+
 
     #region [ Messenger ]
 
-    [Header("[ Messenger ]")]
+    [Header("[ Message ]")]
     public Transform messengerParent;
 
-    public ScrollRect messengerScrollRect_Sender;
-    public Transform messengerContent_Sender;
-
-    public GameObject messengerSenderPrefab;
-
-    public ScrollRect messengerScrollRect_Message;
-    public Transform messengerContent_Message;
-
     #endregion
+
 
     #region [ Common ]
 
     [Header("[ Common ]")]
     public Transform commonParent;
-
     public UIButton backBtn;
 
     #endregion
@@ -58,24 +54,49 @@ public class PhoneManager : Singleton<PhoneManager>
 
     public void SetPhoneUI()
     {
+        // Application
         applicationParent = PlayManager.Instance.phoneParent.transform.Find("Application");
 
+        // Messenger
         messengerParent = PlayManager.Instance.phoneParent.transform.Find("Messenger");
-        messengerScrollRect_Sender = messengerParent.Find("Messenger_Scroll").GetComponent<ScrollRect>();
-        messengerContent_Sender = messengerScrollRect_Sender.transform.Find("Viewport").Find("Content");
+        MessengerManager.Instance.SetMessengerUI();
 
+        // Common
         commonParent = PlayManager.Instance.phoneParent.transform.Find("Common");
         backBtn = commonParent.Find("Back_Btn").GetComponent<UIButton>();
         backBtn.OnClick += OnClickBack;
 
         LoadApplicationUI();
-        LoadMessenger();
+        SetPhoneState(PhoneState.Application);
     }
 
     public void SetPhoneState(PhoneState state)
     {
-        phoneState = state;
-        applicationParent.gameObject.SetActive(false);
+        switch(state)
+        {
+            case PhoneState.Messenger:
+                openLayerTuStack.Push((PhoneState.Messenger, messengerParent.gameObject));
+                closeLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
+                ShowCloseBtn(true);
+                LayerControl();
+                break;
+            case PhoneState.Application:
+                openLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
+                closeLayerTuStack.Push((PhoneState.Application, null));
+                LayerControl();
+                break;
+        }
+    }
+
+    void LayerControl()
+    {
+        if (openLayerTuStack.Peek().Item2 != null)
+        {
+            phoneState = openLayerTuStack.Peek().Item1;
+            openLayerTuStack.Peek().Item2.SetActive(true);
+        }
+        if (closeLayerTuStack.Peek().Item2 != null)
+            closeLayerTuStack.Peek().Item2.SetActive(false);
     }
 
     #region [ Application]
@@ -93,41 +114,28 @@ public class PhoneManager : Singleton<PhoneManager>
 
     #endregion
 
-    #region [ Messenger ]
-
-    public void ShowMessenger()
-    {
-        messengerParent.gameObject.SetActive(true);
-    }
-
-    void CloseMessenger()
-    {
-        messengerParent.gameObject.SetActive(false);
-    }
-
-    void LoadMessenger()
-    {
-        UIMessageSender uiMessageSender = null;
-
-        for (int index = 0; index < ConversationManager.Instance.charTypeDic.Count; index++)
-        {
-            uiMessageSender = Instantiate(messengerSenderPrefab, messengerContent_Sender).GetComponent<UIMessageSender>();
-            uiMessageSender.SetMessageSender(index);
-        }
-    }
-
-    #endregion
 
     #region [ Common ]
 
-    public void ShowCloseBtn()
+
+    public void ShowCloseBtn(bool isOn)
     {
-        backBtn.gameObject.SetActive(true);
+        backBtn.gameObject.SetActive(isOn);
     }
 
     void OnClickBack()
     {
-        CloseApplication(phoneState);
+        //CloseApplication(phoneState);
+        if (openLayerTuStack.Peek().Item2 != null)
+            openLayerTuStack.Pop().Item2.SetActive(false);
+        if (closeLayerTuStack.Peek().Item2 != null)
+        {
+            phoneState = closeLayerTuStack.Peek().Item1;
+            closeLayerTuStack.Pop().Item2.SetActive(true);
+        }
+
+        if (phoneState == PhoneState.Application)
+            ShowCloseBtn(false);
     }
 
     void CloseApplication(PhoneState state)
@@ -135,16 +143,16 @@ public class PhoneManager : Singleton<PhoneManager>
         switch(state)
         {
             case PhoneState.Messenger:
-                messengerParent.gameObject.SetActive(false);
+                SetPhoneState(PhoneState.Application);
                 break;
-            case PhoneState.Idle:
+            case PhoneState.Application:
                 return;
         }
 
-        backBtn.gameObject.SetActive(false);
+        ShowCloseBtn(false);
         applicationParent.gameObject.SetActive(true);
 
-        phoneState = PhoneState.Idle;
+        phoneState = PhoneState.Application;
     }
 
     #endregion
@@ -152,6 +160,6 @@ public class PhoneManager : Singleton<PhoneManager>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
-            ShowMessenger();
+            SetPhoneState(PhoneState.Messenger);
     }
 }

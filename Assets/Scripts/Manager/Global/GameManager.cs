@@ -31,7 +31,6 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log($"TableLoader.OnTableLoadComplete");
 
-
         Instantiate(uiManagerPrefab, transform);
         Instantiate(sceneControlManagerPrefab, transform);
         Instantiate(objectPoolManagerPrefab, transform);

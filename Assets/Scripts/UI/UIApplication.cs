@@ -45,19 +45,15 @@ public class UIApplication : MonoBehaviour
 
     void OnClickApp()
     {
-        PhoneManager.Instance.ShowCloseBtn();
-
         switch(phoneState)
         {
             case PhoneState.Messenger:
-                PhoneManager.Instance.ShowMessenger();
+                PhoneManager.Instance.SetPhoneState(PhoneState.Messenger);
                 break;
             //case ApplicationType.Setting:
             //    UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, true);
             //    break;
         }
-
-        PhoneManager.Instance.SetPhoneState(PhoneState.Messenger);
     }
 
     // Update is called once per frame

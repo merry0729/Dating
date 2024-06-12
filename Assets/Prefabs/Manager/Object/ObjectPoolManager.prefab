@@ -45,4 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationPrefab: {fileID: 8838254727240060285, guid: 3f8f5d2f5ec056a4a95b3e622703093e, type: 3}
-  currentPoolingObject: {fileID: 0}
+  messagePrefab_Sender: {fileID: 2861600865527551075, guid: 455e7d7377f94a04286079309f78a1f2, type: 3}
+  messagePrefab_Mine: {fileID: 6122571758059741470, guid: 18ce9a89832bb3e41ba04f3ba588aa2c, type: 3}
+  poolPrefabDic:
+    keys: 
+    values: []
+  poolBoxDic:
+    keys: 
+    values: []
+  poolObjectDic:
+    keys: 
+  poolParentDic:
+    keys: 
+    values: 

@@ -10,6 +10,8 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     /// 풀링할 오브젝트 프리팹 (현재는 1개)
     /// </summary>
     public GameObject conversationPrefab;
+    public GameObject messagePrefab_Sender;
+    public GameObject messagePrefab_Mine;
 
     /// <summary>
     /// 풀링 오브젝트를 관리 할 Dictionary 모음.
@@ -44,8 +46,12 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
     {
         // 풀링 오브젝트 프리팹 Dictionary 등록.
         poolPrefabDic.Add(PoolType.Conversation, conversationPrefab);
+        poolPrefabDic.Add(PoolType.Message_Mine, messagePrefab_Mine);
+        poolPrefabDic.Add(PoolType.Message_Sender, messagePrefab_Sender);
         // 풀링 오브젝트 타입 Dictionart 등록.
         poolParentDic.Add(PoolType.Conversation, PoolParentType.UI);
+        poolParentDic.Add(PoolType.Message_Mine, PoolParentType.UI);
+        poolParentDic.Add(PoolType.Message_Sender, PoolParentType.UI);
 
         // PoolType의 Length에 따라 생성 및 초기화.
         for (int index = 0; index < Enum.GetValues(typeof(PoolType)).Length; index++)
