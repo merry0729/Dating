@@ -11,6 +11,12 @@
 [ ----- 진행사항 ----- ]
 
 [ 2024.06.12 ]
+- Phone Screen Layer 로직 수정
+- Message Pooling 
+- Message Object Position Update
+- Message Scroll Update
+
+[ 2024.06.12 ]
 - Message Resource 추가  
 - Message Scroll 생성  
 - Message Object Pool  

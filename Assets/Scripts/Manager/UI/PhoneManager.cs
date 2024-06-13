@@ -35,7 +35,11 @@ public class PhoneManager : Singleton<PhoneManager>
     public Transform commonParent;
     public UIButton backBtn;
 
+    public Action<GameObject> backAction;
+
     #endregion
+
+
 
     void Start()
     {
@@ -70,22 +74,34 @@ public class PhoneManager : Singleton<PhoneManager>
         SetPhoneState(PhoneState.Application);
     }
 
-    public void SetPhoneState(PhoneState state)
+    public void SetPhoneState(PhoneState state, ApplicationType appType = ApplicationType.None)
     {
-        switch(state)
+        if(state == PhoneState.Application)
         {
-            case PhoneState.Messenger:
-                openLayerTuStack.Push((PhoneState.Messenger, messengerParent.gameObject));
-                closeLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
-                ShowCloseBtn(true);
-                LayerControl();
-                break;
-            case PhoneState.Application:
-                openLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
-                closeLayerTuStack.Push((PhoneState.Application, null));
-                LayerControl();
-                break;
+            openLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
+            closeLayerTuStack.Push((PhoneState.Application, null));
+            LayerControl();
         }
+        else if (state == PhoneState.InApp)
+        {
+            switch(appType)
+            {
+                case ApplicationType.Messenger:
+                    openLayerTuStack.Push((PhoneState.InApp, messengerParent.gameObject));
+                    closeLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
+                    break;
+            }
+            
+            ShowCloseBtn(true);
+            LayerControl();
+        }
+    }
+
+    public void AddAppStack(GameObject openObject, GameObject closeObject)
+    {
+        openLayerTuStack.Push((PhoneState.InApp, openObject));
+        closeLayerTuStack.Push((PhoneState.InApp, closeObject));
+        LayerControl();
     }
 
     void LayerControl()
@@ -105,7 +121,7 @@ public class PhoneManager : Singleton<PhoneManager>
     {
         UIApplication uIApplication = null;
 
-        for (int index = 0; index < Enum.GetValues(typeof(ApplicationType)).Length; index++)
+        for (int index = 0; index < Enum.GetValues(typeof(ApplicationType)).Length - 1; index++)
         {
             uIApplication = Instantiate(applicationPrefab, applicationParent).GetComponent<UIApplication>();
             uIApplication.SetApplication(index);
@@ -125,14 +141,29 @@ public class PhoneManager : Singleton<PhoneManager>
 
     void OnClickBack()
     {
-        //CloseApplication(phoneState);
-        if (openLayerTuStack.Peek().Item2 != null)
-            openLayerTuStack.Pop().Item2.SetActive(false);
-        if (closeLayerTuStack.Peek().Item2 != null)
+        GameObject openObject = closeLayerTuStack.Peek().Item2;
+        GameObject closeObject = openLayerTuStack.Peek().Item2;
+
+        if (closeObject != null)
+            closeObject.SetActive(false);
+        if (openObject != null)
         {
             phoneState = closeLayerTuStack.Peek().Item1;
-            closeLayerTuStack.Pop().Item2.SetActive(true);
+            openObject.SetActive(true);
         }
+
+        //if (openLayerTuStack.Peek().Item2 != null)
+        //    openLayerTuStack.Pop().Item2.SetActive(false);
+        //if (closeLayerTuStack.Peek().Item2 != null)
+        //{
+        //    phoneState = closeLayerTuStack.Peek().Item1;
+        //    closeLayerTuStack.Pop().Item2.SetActive(true);
+        //}
+
+        backAction?.Invoke(closeObject);
+
+        openLayerTuStack.Pop();
+        closeLayerTuStack.Pop();
 
         if (phoneState == PhoneState.Application)
             ShowCloseBtn(false);
@@ -142,7 +173,7 @@ public class PhoneManager : Singleton<PhoneManager>
     {
         switch(state)
         {
-            case PhoneState.Messenger:
+            case PhoneState.InApp:
                 SetPhoneState(PhoneState.Application);
                 break;
             case PhoneState.Application:
@@ -160,6 +191,6 @@ public class PhoneManager : Singleton<PhoneManager>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
-            SetPhoneState(PhoneState.Messenger);
+            SetPhoneState(PhoneState.InApp);
     }
 }

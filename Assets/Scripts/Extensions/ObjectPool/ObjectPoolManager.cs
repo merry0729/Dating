@@ -111,6 +111,17 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager>
         poolObject.transform.SetParent(poolBoxDic[poolType].transform);
     }
 
+    public void EnableAllPoolObject(PoolType poolType)
+    {
+        Debug.Log($"poolObjectDic[poolType] : {poolObjectDic[poolType].Count}");
+
+        foreach(var obj in poolObjectDic[poolType])
+        {
+            obj.gameObject.SetActive(false);
+            obj.transform.SetParent(poolBoxDic[poolType].transform);
+        }
+    }
+
     /// <summary>
     /// [오브젝트 삭제]
     /// </summary>

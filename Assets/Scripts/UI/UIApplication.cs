@@ -9,7 +9,7 @@ public class UIApplication : MonoBehaviour
     public Image appImage;
     public TextMeshProUGUI appText;
 
-    PhoneState phoneState;
+    ApplicationType appType;
 
     UIButton appBtn;
 
@@ -26,7 +26,7 @@ public class UIApplication : MonoBehaviour
 
     public void SetApplication(int index)
     {
-        phoneState = (PhoneState)index;
+        appType = (ApplicationType)index;
         SetApplicationUI();
         UpdateApplicationUI();
     }
@@ -40,23 +40,19 @@ public class UIApplication : MonoBehaviour
     void UpdateApplicationUI()
     {
         //appImage.sprite = 
-        appText.text = phoneState.ToString();
+        appText.text = appType.ToString();
     }
 
     void OnClickApp()
     {
-        switch(phoneState)
+        switch (appType)
         {
-            case PhoneState.Messenger:
-                PhoneManager.Instance.SetPhoneState(PhoneState.Messenger);
+            case ApplicationType.Messenger:
+                PhoneManager.Instance.SetPhoneState(PhoneState.InApp, appType);
                 break;
-            //case ApplicationType.Setting:
-            //    UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, true);
-            //    break;
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         

@@ -89,13 +89,14 @@ public enum CharScaleType
 
 public enum PhoneState
 {
-    Messenger,
+    InApp,
     Application,
 }
 
 public enum ApplicationType
 {
     Messenger,
+    None,
 }
 
 #endregion
