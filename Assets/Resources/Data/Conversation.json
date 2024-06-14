@@ -1,6 +1,6 @@
 ﻿[
   {
-    "Id": 1,
+    "Id": 0,
     "Name": "Con_1",
     "Who": 0,
     "ConPos": 0,
@@ -12,7 +12,7 @@
     "RemoveHold": false
   },
   {
-    "Id": 2,
+    "Id": 1,
     "Name": "Con_2",
     "Who": 1,
     "ConPos": 2,
@@ -24,7 +24,7 @@
     "RemoveHold": false
   },
   {
-    "Id": 3,
+    "Id": 2,
     "Name": "Con_3",
     "Who": 2,
     "ConPos": 1,
@@ -36,7 +36,7 @@
     "RemoveHold": false
   },
   {
-    "Id": 4,
+    "Id": 3,
     "Name": "Con_4",
     "Who": 1,
     "ConPos": 2,
@@ -48,7 +48,7 @@
     "RemoveHold": false
   },
   {
-    "Id": 5,
+    "Id": 4,
     "Name": "Con_5",
     "Who": 0,
     "ConPos": 0,
@@ -60,7 +60,7 @@
     "RemoveHold": false
   },
   {
-    "Id": 6,
+    "Id": 5,
     "Name": "Con_6",
     "Who": 0,
     "ConPos": 1,

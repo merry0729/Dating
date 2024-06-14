@@ -22,7 +22,7 @@ public class ConversationManager : Singleton<ConversationManager>
     ConversationSettingTable conSetTable;
     ConversationSettingData conSetData;
 
-    int currentId = 1;
+    int currentId = 0;
 
     private void Awake()
     {

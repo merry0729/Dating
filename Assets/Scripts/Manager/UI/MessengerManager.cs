@@ -15,6 +15,7 @@ public class MessengerManager : Singleton<MessengerManager>
     [Header("[ Message ]")]
     SerializableDictionary<PoolingObject, UIMessage> messageDic = new SerializableDictionary<PoolingObject, UIMessage>();
     SerializableDictionary<PoolType, Queue<UIMessage>> messageQueueDic = new SerializableDictionary<PoolType, Queue<UIMessage>>();
+    SerializableDictionary<CharType, HeroinMessage> messageDataDic = new SerializableDictionary<CharType, HeroinMessage>();
 
     public ScrollRect messageScrollRect;
     public RectTransform messageScrollRectTransform;
@@ -25,10 +26,34 @@ public class MessengerManager : Singleton<MessengerManager>
 
     public Vector2 messagePosOffset = new Vector2(50, 50);
 
+    public MessageTable messageTable;
+    public MessageData messageData;
+
     #region [ Messenger Sender ]
 
     private void Awake()
     {
+        messageTable = MessageData.Table;
+
+        messageDataDic.Add(CharType.Heroin_1, new HeroinMessage());
+        messageDataDic.Add(CharType.Heroin_2, new HeroinMessage());
+        messageDataDic.Add(CharType.Heroin_3, new HeroinMessage());
+
+        foreach(var data in messageTable.Values)
+        {
+            messageDataDic[CharType.Heroin_1].speaker.Add((CharType)data.Speaker_Heroin1);
+            messageDataDic[CharType.Heroin_1].messageContinue.Add(data.Continue_Heroin1);
+            messageDataDic[CharType.Heroin_1].messageText.Add(data.Message_Heroin1);
+
+            messageDataDic[CharType.Heroin_2].speaker.Add((CharType)data.Speaker_Heroin2);
+            messageDataDic[CharType.Heroin_2].messageContinue.Add(data.Continue_Heroin2);
+            messageDataDic[CharType.Heroin_2].messageText.Add(data.Message_Heroin2);
+
+            messageDataDic[CharType.Heroin_3].speaker.Add((CharType)data.Speaker_Heroin3);
+            messageDataDic[CharType.Heroin_3].messageContinue.Add(data.Continue_Heroin3);
+            messageDataDic[CharType.Heroin_3].messageText.Add(data.Message_Heroin3);
+        }
+
         PhoneManager.Instance.backAction += OnBack;
 
         messageQueueDic.Add(PoolType.Message_Mine, new Queue<UIMessage>());
@@ -69,12 +94,26 @@ public class MessengerManager : Singleton<MessengerManager>
 
     #region [ Message ]
 
-    public void ShowMessage()
+    public void ShowMessage(CharType speakerType)
     {
         PhoneManager.Instance.AddAppStack(messageScrollRect.gameObject, messengerScrollRect.gameObject);
 
+        //while(messageDataDic[speakerType].messageContinue[] == false)
+
+        //for(int index = messageDataDic[speakerType].currentIndex; index < messageDataDic[])
+
+
+        //switch (speakerType)
+        //{
+        //    case CharType.Heroin_1:
+        //        break;
+        //    case CharType.Heroin_2:
+        //        break;
+        //    case CharType.Heroin_3:
+        //        break;
+        //}
     }
-    
+
     void OnBack(GameObject closeObject)
     {
         Debug.Log($"OnBack : {closeObject.name}");
@@ -107,8 +146,6 @@ public class MessengerManager : Singleton<MessengerManager>
         messageQueueDic[poolType].Enqueue(uiMessage);
 
         SetMessagePos(poolType, uiMessage);
-
-        
 
         return uiMessage;
     }
@@ -154,4 +191,12 @@ public class MessengerManager : Singleton<MessengerManager>
             }
         }
     }
+}
+
+public class HeroinMessage
+{
+    public List<CharType> speaker = new List<CharType>();
+    public List<bool> messageContinue = new List<bool>();
+    public List<string> messageText = new List<string>();
+    public int currentIndex = 0;
 }

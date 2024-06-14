@@ -41,7 +41,7 @@ public enum PoolParentType
 
 public enum ConSetType
 {
-    Pos = 1,
+    Pos,
 }
 
 public enum ConPosType
@@ -61,6 +61,7 @@ public enum CharType
     Heroin_1,
     Heroin_2,
     Heroin_3,
+    
 }
 
 public enum CharDataType
@@ -96,6 +97,7 @@ public enum PhoneState
 public enum ApplicationType
 {
     Messenger,
+    Album,
     None,
 }
 

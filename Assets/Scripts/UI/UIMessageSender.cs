@@ -48,6 +48,6 @@ public class UIMessageSender : MonoBehaviour
 
     void OnClickSender()
     {
-        MessengerManager.Instance.ShowMessage();
+        MessengerManager.Instance.ShowMessage(currentMessageSender);
     }
 }

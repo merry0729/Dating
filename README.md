@@ -9,11 +9,15 @@
 
 
 [ ----- 진행사항 ----- ]
+[ 2024.06.14 ]
+- Message Data 수정  
+- Message Data Class 생성  
+- Json Data ID 수정
 
-[ 2024.06.12 ]
-- Phone Screen Layer 로직 수정
-- Message Pooling 
-- Message Object Position Update
+[ 2024.06.13 ]
+- Phone Screen Layer 로직 수정  
+- Message Pooling  
+- Message Object Position Update  
 - Message Scroll Update
 
 [ 2024.06.12 ]
