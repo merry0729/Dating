@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Id": 0,
+    "Name": "Main",
+    "Type": 0,
+    "ImgFileName": "Main"
+  },
+  {
+    "Id": 1,
+    "Name": "Heroin1",
+    "Type": 1,
+    "ImgFileName": "Heroin1"
+  },
+  {
+    "Id": 2,
+    "Name": "Heroin2",
+    "Type": 2,
+    "ImgFileName": "Heroin2"
+  },
+  {
+    "Id": 3,
+    "Name": "Heroin3",
+    "Type": 3,
+    "ImgFileName": "Heroin3"
+  }
+]

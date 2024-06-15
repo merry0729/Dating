@@ -34,12 +34,13 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _tableLoadingCount = 0;
         _loadedTable.Clear();
+        LoadTableGenericClient<CharacterData>(delayLoad);
         LoadTableGenericClient<CharacterSettingData>(delayLoad);
         LoadTableGenericClient<ConversationData>(delayLoad);
         LoadTableGenericClient<ConversationSettingData>(delayLoad);
         LoadTableGenericClient<MessageData>(delayLoad);
-        LoadTableGenericClient<MessengerData>(delayLoad);
         await UniTask.Delay(20);
+        LoadTableGenericClient<MessengerData>(delayLoad);
         LoadTableGenericClient<OptionsData>(delayLoad);
         LoadTableGenericClient<SettingData>(delayLoad);
         LoadTableGenericClient<SoundData>(delayLoad);
@@ -51,12 +52,13 @@ public partial class TableLoader
         try {
             _tableLoadingCount = 0;
             _loadedTable.Clear();
+            LoadTableGenericClient<CharacterData>(delayLoad);
             LoadTableGenericClient<CharacterSettingData>(delayLoad);
             LoadTableGenericClient<ConversationData>(delayLoad);
             LoadTableGenericClient<ConversationSettingData>(delayLoad);
             LoadTableGenericClient<MessageData>(delayLoad);
-            LoadTableGenericClient<MessengerData>(delayLoad);
             await UniTask.Delay(20);
+            LoadTableGenericClient<MessengerData>(delayLoad);
             LoadTableGenericClient<OptionsData>(delayLoad);
             LoadTableGenericClient<SettingData>(delayLoad);
             LoadTableGenericClient<SoundData>(delayLoad);
@@ -100,12 +102,13 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _tableLoadingCount = 0;
         _loadedTable.Clear();
+        LoadTableGenericClient<CharacterData>(delayLoad);
         LoadTableGenericClient<CharacterSettingData>(delayLoad);
         LoadTableGenericClient<ConversationData>(delayLoad);
         LoadTableGenericClient<ConversationSettingData>(delayLoad);
         LoadTableGenericClient<MessageData>(delayLoad);
-        LoadTableGenericClient<MessengerData>(delayLoad);
         await UniTask.Delay(20);
+        LoadTableGenericClient<MessengerData>(delayLoad);
         LoadTableGenericClient<OptionsData>(delayLoad);
         LoadTableGenericClient<SettingData>(delayLoad);
         LoadTableGenericClient<SoundData>(delayLoad);
@@ -117,12 +120,13 @@ public partial class TableLoader
         try {
             _tableLoadingCount = 0;
             _loadedTable.Clear();
+            LoadTableGenericClient<CharacterData>(delayLoad);
             LoadTableGenericClient<CharacterSettingData>(delayLoad);
             LoadTableGenericClient<ConversationData>(delayLoad);
             LoadTableGenericClient<ConversationSettingData>(delayLoad);
             LoadTableGenericClient<MessageData>(delayLoad);
-            LoadTableGenericClient<MessengerData>(delayLoad);
             await UniTask.Delay(20);
+            LoadTableGenericClient<MessengerData>(delayLoad);
             LoadTableGenericClient<OptionsData>(delayLoad);
             LoadTableGenericClient<SettingData>(delayLoad);
             LoadTableGenericClient<SoundData>(delayLoad);
@@ -142,12 +146,13 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _tableLoadingCount = 0;
         _loadedTable.Clear();
+        LoadTableGenericClient<CharacterData>(delayLoad);
         LoadTableGenericClient<CharacterSettingData>(delayLoad);
         LoadTableGenericClient<ConversationData>(delayLoad);
         LoadTableGenericClient<ConversationSettingData>(delayLoad);
         LoadTableGenericClient<MessageData>(delayLoad);
-        LoadTableGenericClient<MessengerData>(delayLoad);
         await UniTask.Delay(20);
+        LoadTableGenericClient<MessengerData>(delayLoad);
         LoadTableGenericClient<OptionsData>(delayLoad);
         LoadTableGenericClient<SettingData>(delayLoad);
         LoadTableGenericClient<SoundData>(delayLoad);
@@ -158,12 +163,13 @@ public partial class TableLoader
         try {
             _tableLoadingCount = 0;
             _loadedTable.Clear();
+            LoadTableGenericClient<CharacterData>(delayLoad);
             LoadTableGenericClient<CharacterSettingData>(delayLoad);
             LoadTableGenericClient<ConversationData>(delayLoad);
             LoadTableGenericClient<ConversationSettingData>(delayLoad);
             LoadTableGenericClient<MessageData>(delayLoad);
-            LoadTableGenericClient<MessengerData>(delayLoad);
             await UniTask.Delay(20);
+            LoadTableGenericClient<MessengerData>(delayLoad);
             LoadTableGenericClient<OptionsData>(delayLoad);
             LoadTableGenericClient<SettingData>(delayLoad);
             LoadTableGenericClient<SoundData>(delayLoad);
@@ -182,12 +188,13 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _tableLoadingCount = 0;
         _loadedTable.Clear();
+        LoadTableGenericClient<CharacterData>(delayLoad, true);
         LoadTableGenericClient<CharacterSettingData>(delayLoad, true);
         LoadTableGenericClient<ConversationData>(delayLoad, true);
         LoadTableGenericClient<ConversationSettingData>(delayLoad, true);
         LoadTableGenericClient<MessageData>(delayLoad, true);
-        LoadTableGenericClient<MessengerData>(delayLoad, true);
         await UniTask.Delay(20);
+        LoadTableGenericClient<MessengerData>(delayLoad, true);
         LoadTableGenericClient<OptionsData>(delayLoad, true);
         LoadTableGenericClient<SettingData>(delayLoad, true);
         LoadTableGenericClient<SoundData>(delayLoad, true);
@@ -199,12 +206,13 @@ public partial class TableLoader
         try {
             _tableLoadingCount = 0;
             _loadedTable.Clear();
+            LoadTableGenericClient<CharacterData>(delayLoad, true);
             LoadTableGenericClient<CharacterSettingData>(delayLoad, true);
             LoadTableGenericClient<ConversationData>(delayLoad, true);
             LoadTableGenericClient<ConversationSettingData>(delayLoad, true);
             LoadTableGenericClient<MessageData>(delayLoad, true);
-            LoadTableGenericClient<MessengerData>(delayLoad, true);
             await UniTask.Delay(20);
+            LoadTableGenericClient<MessengerData>(delayLoad, true);
             LoadTableGenericClient<OptionsData>(delayLoad, true);
             LoadTableGenericClient<SettingData>(delayLoad, true);
             LoadTableGenericClient<SoundData>(delayLoad, true);
@@ -224,6 +232,7 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _loadedTable.Clear();
         
+        await LoadTableGenericServer<CharacterData>(delayLoad);
         await LoadTableGenericServer<CharacterSettingData>(delayLoad);
         await LoadTableGenericServer<ConversationData>(delayLoad);
         await LoadTableGenericServer<ConversationSettingData>(delayLoad);
@@ -239,6 +248,7 @@ public partial class TableLoader
         try {
             _loadedTable.Clear();
             
+            await LoadTableGenericServer<CharacterData>(delayLoad);
             await LoadTableGenericServer<CharacterSettingData>(delayLoad);
             await LoadTableGenericServer<ConversationData>(delayLoad);
             await LoadTableGenericServer<ConversationSettingData>(delayLoad);
@@ -262,6 +272,7 @@ public partial class TableLoader
 #if LIVE_BUILD        
         _loadedTable.Clear();
         
+        LoadTableGenericOverride<CharacterData>(delayLoad);
         LoadTableGenericOverride<CharacterSettingData>(delayLoad);
         LoadTableGenericOverride<ConversationData>(delayLoad);
         LoadTableGenericOverride<ConversationSettingData>(delayLoad);
@@ -277,6 +288,7 @@ public partial class TableLoader
         try {
             _loadedTable.Clear();
             
+            LoadTableGenericOverride<CharacterData>(delayLoad);
             LoadTableGenericOverride<CharacterSettingData>(delayLoad);
             LoadTableGenericOverride<ConversationData>(delayLoad);
             LoadTableGenericOverride<ConversationSettingData>(delayLoad);

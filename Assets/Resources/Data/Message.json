@@ -20,7 +20,7 @@
     "Continue_Heroin2": true,
     "Message_Heroin2": "Thank",
     "Speaker_Heroin3": 3,
-    "Continue_Heroin3": true,
+    "Continue_Heroin3": false,
     "Message_Heroin3": "Thank"
   },
   {
@@ -68,7 +68,150 @@
     "Continue_Heroin2": false,
     "Message_Heroin2": "Also damages the minions next to whomever he attacks.",
     "Speaker_Heroin3": 3,
-    "Continue_Heroin3": true,
+    "Continue_Heroin3": false,
     "Message_Heroin3": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 6,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Hello",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Hello",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "Hello"
+  },
+  {
+    "Id": 7,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Thank",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Thank",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "Thank"
+  },
+  {
+    "Id": 8,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": false,
+    "Message_Heroin1": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Speaker_Heroin3": 0,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 9,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "When this attacks, restore 5 Health to the hero of the player who buffed it.",
+    "Continue_Heroin2": false,
+    "Message_Heroin2": "When this attacks, restore 5 Health to the hero of the player who buffed it.",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "When this attacks, restore 5 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 10,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Increased Attack.",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Increased Attack.",
+    "Speaker_Heroin3": 0,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "Increased Attack."
+  },
+  {
+    "Id": 11,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": false,
+    "Message_Heroin1": "Also damages the minions next to whomever he attacks.",
+    "Continue_Heroin2": false,
+    "Message_Heroin2": "Also damages the minions next to whomever he attacks.",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 12,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Hello",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Hello",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "Hello"
+  },
+  {
+    "Id": 13,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Thank",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Thank",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "Thank"
+  },
+  {
+    "Id": 14,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Speaker_Heroin3": 0,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 15,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "When this attacks, restore 6 Health to the hero of the player who buffed it.",
+    "Continue_Heroin2": false,
+    "Message_Heroin2": "When this attacks, restore 6 Health to the hero of the player who buffed it.",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "When this attacks, restore 6 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 16,
+    "Speaker_Heroin1": 1,
+    "Continue_Heroin1": false,
+    "Message_Heroin1": "Increased Attack.",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Increased Attack.",
+    "Speaker_Heroin3": 0,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "Increased Attack."
+  },
+  {
+    "Id": 17,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": true,
+    "Message_Heroin1": "Also damages the minions next to whomever he attacks.",
+    "Continue_Heroin2": false,
+    "Message_Heroin2": "Also damages the minions next to whomever he attacks.",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": false,
+    "Message_Heroin3": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 18,
+    "Speaker_Heroin1": 0,
+    "Continue_Heroin1": false,
+    "Message_Heroin1": "Hello",
+    "Continue_Heroin2": true,
+    "Message_Heroin2": "Hello",
+    "Speaker_Heroin3": 3,
+    "Continue_Heroin3": true,
+    "Message_Heroin3": "Hello"
   }
 ]
