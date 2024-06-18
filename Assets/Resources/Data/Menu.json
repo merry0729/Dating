@@ -1,0 +1,27 @@
+﻿[
+  {
+    "Id": 0,
+    "StatusType": 0,
+    "MenuFileName": "Status"
+  },
+  {
+    "Id": 1,
+    "StatusType": 1,
+    "MenuFileName": "Achievement"
+  },
+  {
+    "Id": 2,
+    "StatusType": 2,
+    "MenuFileName": "Information"
+  },
+  {
+    "Id": 3,
+    "StatusType": 3,
+    "MenuFileName": "Setting"
+  },
+  {
+    "Id": 4,
+    "StatusType": 4,
+    "MenuFileName": "Exit"
+  }
+]

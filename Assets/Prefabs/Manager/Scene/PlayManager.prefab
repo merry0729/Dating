@@ -45,5 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playObjectPrefab: {fileID: 8086071420260130774, guid: 287c3d249d927fb40b0bb004108b528f, type: 3}
+  rightMenuPrefab: {fileID: 7745281971848004577, guid: 91a4425f46414bf45838a797317f934c, type: 3}
+  rightMenuParent: {fileID: 0}
+  illust_Character_Main: {fileID: 0}
+  characterSettingData:
+    Id: 0
+    Name: 
+    Type: 0
+  optionsData:
+    Id: 0
+    Name: 
+    OptionType: 
+    Options: []
   uiOptionPrefab: {fileID: 1715733174268406658, guid: 31bc17e9aed87604b960d9ca2f645c4e, type: 3}
   optionsList: []
+  phoneParent: {fileID: 0}

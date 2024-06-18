@@ -123,7 +123,8 @@ public partial class JsonTableGenerator : ScriptableObject
 				$"using System;",
 				$"using UnityEngine;",
 				$"using TemplateTable;",
-				$"");
+				$"",
+				$"[Serializable]");
 
 			using (writer.B($"public partial class {className}")) {
 				while (false == reader.EndOfStream) {

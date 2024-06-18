@@ -19,6 +19,24 @@ public enum WindowUIType
 
 #endregion
 
+#region [ Play UI ]
+
+public enum MenuType
+{
+    Status,
+    Achievement,
+    Infomation,
+    Setting,
+    Exit,
+}
+
+public enum Status
+{
+    
+}
+
+#endregion
+
 #region [ ObjectPoolManager ]
 
 // ObjectPoolManager.

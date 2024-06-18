@@ -124,7 +124,7 @@ public class UIManager : Singleton<UIManager>
             PhoneManager.Instance.SetPhoneUI();
 
             resolutionRect.Add(currentSceneUI.transform.Find("Options").GetComponent<RectTransform>());
-            resolutionRect.Add(currentSceneUI.transform.Find("CharacterPlaying").GetComponent<RectTransform>());
+            resolutionRect.Add(currentSceneUI.transform.Find("Menu").GetComponent<RectTransform>());
         }
     }
 

@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using TemplateTable;
 
+[Serializable]
 public partial class ConversationSettingData
 {
     public int Id;

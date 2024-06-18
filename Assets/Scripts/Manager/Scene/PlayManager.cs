@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,30 @@ using Cysharp.Threading.Tasks;
 
 public class PlayManager : Singleton<PlayManager>
 {
+    #region [ Play Object ]
+
+    [Header(" [ Play Object ] ")]
     public GameObject playObjectPrefab;
     private GameObject playObject;
 
     private Background illust_Background;
 
+    #endregion
+
+
+    #region [ Play UI Object ]
+
+    [Header(" [ Play UI Object ] ")]
+    public GameObject rightMenuPrefab;
+    public Transform rightMenuParent;
+
+    #endregion
+
+
     #region [ Conversation Character Declare ]
 
-    private Character illust_Character_Main;
+    [Header(" [ Conversation Character ] ")]
+    public Character illust_Character_Main;
 
     public CharacterSettingTable characterSettingTable;
     public CharacterSettingData characterSettingData;
@@ -24,8 +41,10 @@ public class PlayManager : Singleton<PlayManager>
 
     #region [ Options Declare ]
 
-    private OptionsTable optionsTable;
-    private OptionsData optionsData;
+    [Header(" [ Options ] ")]
+    public OptionsData optionsData;
+    public OptionsTable optionsTable;
+    
 
     public GameObject uiOptionPrefab;
     private Transform optionParent;
@@ -38,8 +57,8 @@ public class PlayManager : Singleton<PlayManager>
 
     #region
 
+    [Header(" [ Phone ] ")]
     public GameObject phoneParent;
-
 
     #endregion
 
@@ -71,6 +90,9 @@ public class PlayManager : Singleton<PlayManager>
 
     public void SetPlayUI()
     {
+        rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
+        SetMenus();
+
         optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
         optionBackground = optionParent.Find("Option_Background").transform;
 
@@ -83,6 +105,20 @@ public class PlayManager : Singleton<PlayManager>
     public void SetBackground()
     {
 
+    }
+
+    #endregion
+
+    #region [ Menu ]
+
+    void SetMenus()
+    {
+        for (int index = 0; index < Enum.GetValues(typeof(MenuType)).Length; index++)
+        {
+            UIMenu menu = Instantiate(rightMenuPrefab, rightMenuParent).GetComponent<UIMenu>();
+            menu.transform.SetAsFirstSibling();
+            menu.SetMenu((MenuType)index);
+        }
     }
 
     #endregion
