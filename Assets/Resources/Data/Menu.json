@@ -12,16 +12,21 @@
   {
     "Id": 2,
     "StatusType": 2,
-    "MenuFileName": "Information"
+    "MenuFileName": "Phone"
   },
   {
     "Id": 3,
     "StatusType": 3,
-    "MenuFileName": "Setting"
+    "MenuFileName": "UIClear"
   },
   {
     "Id": 4,
     "StatusType": 4,
+    "MenuFileName": "Setting"
+  },
+  {
+    "Id": 5,
+    "StatusType": 5,
     "MenuFileName": "Exit"
   }
 ]

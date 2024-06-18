@@ -53,15 +53,22 @@ public class UIMenu : MonoBehaviour
         {
             case MenuType.Status:
                 Debug.Log($"Status Menu");
+                PlayManager.Instance.ActivePlayUI(PlayManager.Instance.statusParent.gameObject);
                 break;
             case MenuType.Achievement:
                 Debug.Log($"Achievement Menu");
                 break;
-            case MenuType.Infomation:
-                Debug.Log($"Infomation Menu");
+            case MenuType.Phone:
+                Debug.Log($"Phone Menu");
+                PlayManager.Instance.ActivePlayUI(PlayManager.Instance.phoneParent.gameObject);
+                break;
+            case MenuType.UIClear:
+                Debug.Log($"UI Clear Menu");
+                PlayManager.Instance.ActiveAllUI(false);
                 break;
             case MenuType.Setting:
                 Debug.Log($"Setting Menu");
+                UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, true);
                 break;
             case MenuType.Exit:
                 Debug.Log($"Exit Menu");

@@ -25,7 +25,8 @@ public enum MenuType
 {
     Status,
     Achievement,
-    Infomation,
+    Phone,
+    UIClear,
     Setting,
     Exit,
 }

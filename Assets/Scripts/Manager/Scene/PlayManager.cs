@@ -20,6 +20,10 @@ public class PlayManager : Singleton<PlayManager>
     #region [ Play UI Object ]
 
     [Header(" [ Play UI Object ] ")]
+    public GameObject upStatusPrefab;
+    public GameObject downStatusPrefab;
+    public Transform statusParent;
+
     public GameObject rightMenuPrefab;
     public Transform rightMenuParent;
 
@@ -55,10 +59,16 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
-    #region
+    #region [ Phone ]
 
     [Header(" [ Phone ] ")]
     public GameObject phoneParent;
+
+    #endregion
+
+    #region [ Common ]
+
+    public UIButton emptyBtn;
 
     #endregion
 
@@ -76,6 +86,11 @@ public class PlayManager : Singleton<PlayManager>
         
     }
 
+    private void OnDestroy()
+    {
+        emptyBtn.OnClick -= OnClickEmpty;
+    }
+
     public void PlayStart()
     {
         ConversationManager.Instance.StartConversation();
@@ -90,6 +105,8 @@ public class PlayManager : Singleton<PlayManager>
 
     public void SetPlayUI()
     {
+        statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
+
         rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
         SetMenus();
 
@@ -97,6 +114,9 @@ public class PlayManager : Singleton<PlayManager>
         optionBackground = optionParent.Find("Option_Background").transform;
 
         phoneParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Phone").gameObject;
+
+        emptyBtn = UIManager.Instance.GetCurrentSceneUI().transform.Find("EmptyPlace").GetComponent<UIButton>();
+        emptyBtn.OnClick += OnClickEmpty;
     }
 
 
@@ -232,6 +252,36 @@ public class PlayManager : Singleton<PlayManager>
     }
 
     #endregion
+
+    #region [ Common ]
+
+    void OnClickEmpty()
+    {
+        if (UIManager.Instance.GetActiveWindowUI(WindowUIType.SettingUI))
+            UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, false);
+        else if (phoneParent.gameObject.activeSelf)
+            phoneParent.gameObject.SetActive(false);
+        else if (statusParent.gameObject.activeSelf)
+            statusParent.gameObject.SetActive(false);
+        else if (!rightMenuParent.gameObject.activeSelf)
+            rightMenuParent.gameObject.SetActive(true);
+    }
+
+    public void ActivePlayUI(GameObject playUI)
+    {
+        playUI.SetActive(!playUI.activeSelf);
+    }
+
+    public void ActiveAllUI(bool isOn)
+    {
+        statusParent.gameObject.SetActive(isOn);
+        rightMenuParent.gameObject.SetActive(isOn);
+        optionParent.gameObject.SetActive(isOn);
+        phoneParent.gameObject.SetActive(isOn);
+    }
+
+    #endregion
+
 
     private void Update()
     {

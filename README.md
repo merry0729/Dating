@@ -10,6 +10,12 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.18 ]
+- Character Status 설계
+- Character Status UI 생성
+- Menu 아이콘 리소스 추가
+- Menu 기능 추가
+
 [ 2024.06.17 ]
 - Menu 시스템 개발
 - Menu UI 세팅

@@ -87,6 +87,17 @@ public class UIManager : Singleton<UIManager>
         WindowOpenAction.Invoke(windowUIType, isOn);
     }
 
+    public bool GetActiveWindowUI(WindowUIType windowUIType)
+    {
+        switch (windowUIType)
+        {
+            case WindowUIType.SettingUI:
+                return settingUIObj.activeSelf;
+            default:
+                return false;
+        }
+    }
+
     public void ActiveUI(GameObject uiObject, bool isOn)
     {
         uiObject.SetActive(isOn);
