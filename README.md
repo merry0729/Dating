@@ -9,6 +9,18 @@
 
 
 [ ----- 진행사항 ----- ]
+
+[ 2024.06.17 ]
+- Menu 시스템 개발
+- Menu UI 세팅
+- Menu Table 생성
+
+[ 2024.06.15 ]
+- Message Data Load
+- Message Data 기반 출력
+- Message Text Size 관리
+- 캐릭터 프로필 사진 적용
+
 [ 2024.06.14 ]
 - Message Data 수정  
 - Message Data Class 생성  
