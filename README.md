@@ -10,6 +10,11 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.19 ]
+- Info Status, Char Status 구분
+- Status Prefab 생성
+- Status 객체 생성 및 배치
+
 [ 2024.06.18 ]
 - Character Status 설계
 - Character Status UI 생성

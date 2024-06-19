@@ -20,12 +20,24 @@ public class PlayManager : Singleton<PlayManager>
     #region [ Play UI Object ]
 
     [Header(" [ Play UI Object ] ")]
-    public GameObject upStatusPrefab;
-    public GameObject downStatusPrefab;
-    public Transform statusParent;
-
     public GameObject rightMenuPrefab;
     public Transform rightMenuParent;
+
+    #endregion
+
+
+    #region [ Status ]
+
+    [Header(" [ Play UI Object ] ")]
+    public GameObject statusPrefab_Info;
+    public GameObject statusPrefab_Char;
+
+    public Transform statusParent;
+    public Transform statusParent_Info;
+    public Transform statusParent_Char;
+
+    public SerializableDictionary<InfoStatusType, UIStatus> infoStatusDic = new SerializableDictionary<InfoStatusType, UIStatus>();
+    public SerializableDictionary<CharStatusType, UIStatus> charStatusDic = new SerializableDictionary<CharStatusType, UIStatus>();
 
     #endregion
 
@@ -105,10 +117,13 @@ public class PlayManager : Singleton<PlayManager>
 
     public void SetPlayUI()
     {
-        statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
-
         rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
         SetMenus();
+
+        statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
+        statusParent_Info = statusParent.transform.Find("Status_Back").transform.Find("Status_Info");
+        statusParent_Char = statusParent.transform.Find("Status_Back").transform.Find("Status_Char");
+        CreateStatus();
 
         optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
         optionBackground = optionParent.Find("Option_Background").transform;
@@ -143,7 +158,7 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
-    #region [ Character ]
+    #region [ Character Play ]
 
     public void SetChracter(int charIndex, int posIndex, int scaleIndex)
     {
@@ -201,6 +216,39 @@ public class PlayManager : Singleton<PlayManager>
         charScaleList.Add(new Vector3(characterSettingData.Vec[(int)CharScaleType.Up][0],
                                       characterSettingData.Vec[(int)CharScaleType.Up][1],
                                       characterSettingData.Vec[(int)CharScaleType.Up][2]));
+    }
+
+    #endregion
+
+    #region [ Status ]
+
+    void CreateStatus()
+    {
+        UIStatus status;
+
+        for (int index = 0; index < Enum.GetValues(typeof(InfoStatusType)).Length; index++)
+        {
+            status = Instantiate(statusPrefab_Info, statusParent_Info).GetComponent<UIStatus>();
+            status.SetStatus();
+            infoStatusDic.Add((InfoStatusType)index, status);
+        }
+
+        for (int index = 0; index < Enum.GetValues(typeof(CharStatusType)).Length; index++)
+        {
+            status = Instantiate(statusPrefab_Char, statusParent_Char).GetComponent<UIStatus>();
+            status.SetStatus();
+            charStatusDic.Add((CharStatusType)index, status);
+        }
+    }
+
+    public void UpdateStatus(InfoStatusType type, float value)
+    {
+        infoStatusDic[type].UpdateStatus(type, value);
+    }
+
+    public void UpdateStatus(CharStatusType type, float value)
+    {
+        charStatusDic[type].UpdateStatus(type, value);
     }
 
     #endregion

@@ -31,9 +31,17 @@ public enum MenuType
     Exit,
 }
 
-public enum Status
+public enum InfoStatusType
 {
-    
+    Time,
+    Cash,
+}
+
+public enum CharStatusType
+{
+    Health,
+    Stress,
+    Hungry,
 }
 
 #endregion

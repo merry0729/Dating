@@ -47,6 +47,17 @@ MonoBehaviour:
   playObjectPrefab: {fileID: 8086071420260130774, guid: 287c3d249d927fb40b0bb004108b528f, type: 3}
   rightMenuPrefab: {fileID: 7745281971848004577, guid: 91a4425f46414bf45838a797317f934c, type: 3}
   rightMenuParent: {fileID: 0}
+  statusPrefab_Info: {fileID: 8025568202495013, guid: fcb85eaf266669345ac63e54f476b655, type: 3}
+  statusPrefab_Char: {fileID: 8025568202495013, guid: ca3481a4a4aa18c4eb7007b35b682f06, type: 3}
+  statusParent: {fileID: 0}
+  statusParent_Info: {fileID: 0}
+  statusParent_Char: {fileID: 0}
+  infoStatusDic:
+    keys: 
+    values: []
+  charStatusDic:
+    keys: 
+    values: []
   illust_Character_Main: {fileID: 0}
   characterSettingData:
     Id: 0
@@ -60,3 +71,4 @@ MonoBehaviour:
   uiOptionPrefab: {fileID: 1715733174268406658, guid: 31bc17e9aed87604b960d9ca2f645c4e, type: 3}
   optionsList: []
   phoneParent: {fileID: 0}
+  emptyBtn: {fileID: 0}
