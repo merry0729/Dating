@@ -10,6 +10,11 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.21 ]
+- Play Scene UI Fade 기능
+- DOTween PlugIn 추가
+- Game Save Data 설계 준비
+
 [ 2024.06.20 ]
 - Conversation 버그 픽스
 - Game Data 설계중

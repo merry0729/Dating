@@ -21,6 +21,14 @@ public enum WindowUIType
 
 #region [ Play UI ]
 
+public enum PlayUIType
+{
+    Status,
+    Menu,
+    Option,
+    Phone,
+}
+
 public enum MenuType
 {
     Status,

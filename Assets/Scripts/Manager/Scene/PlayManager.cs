@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 public class PlayManager : Singleton<PlayManager>
 {
@@ -81,6 +83,8 @@ public class PlayManager : Singleton<PlayManager>
     #region [ Common ]
 
     public UIButton emptyBtn;
+    public SerializableDictionary<PlayUIType, GameObject> parentDic = new SerializableDictionary<PlayUIType, GameObject>();
+    public SerializableDictionary<PlayUIType, CanvasGroup> canvasGroupDic = new SerializableDictionary<PlayUIType, CanvasGroup>();
 
     #endregion
 
@@ -119,18 +123,26 @@ public class PlayManager : Singleton<PlayManager>
     {
         // Menu 오브젝트 등록
         rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
+        parentDic.Add(PlayUIType.Menu, rightMenuParent.gameObject);
+        canvasGroupDic.Add(PlayUIType.Menu, rightMenuParent.GetComponent<CanvasGroup>());
 
         // Status 오브젝트 등록
         statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
         statusParent_Info = statusParent.transform.Find("Status_Back").transform.Find("Status_Info");
         statusParent_Char = statusParent.transform.Find("Status_Back").transform.Find("Status_Char");
+        parentDic.Add(PlayUIType.Status, statusParent.gameObject);
+        canvasGroupDic.Add(PlayUIType.Status, statusParent.GetComponent<CanvasGroup>());
 
         // Option 오브젝트 등록
         optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
         optionBackground = optionParent.Find("Option_Background").transform;
+        parentDic.Add(PlayUIType.Option, optionParent.gameObject);
+        canvasGroupDic.Add(PlayUIType.Option, optionParent.GetComponent<CanvasGroup>());
 
         // Phone 오브젝트 등록
         phoneParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Phone").gameObject;
+        parentDic.Add(PlayUIType.Phone, phoneParent);
+        canvasGroupDic.Add(PlayUIType.Phone, phoneParent.GetComponent<CanvasGroup>());
 
         // Common 오브젝트 등록
         emptyBtn = UIManager.Instance.GetCurrentSceneUI().transform.Find("EmptyPlace").GetComponent<UIButton>();
@@ -338,12 +350,43 @@ public class PlayManager : Singleton<PlayManager>
         playUI.SetActive(!playUI.activeSelf);
     }
 
+    Tween tween;
+
+    public async void ActivePlayUI(PlayUIType playUIType)
+    {
+        if (tween != null && tween.IsPlaying())
+        {
+            Debug.Log($"tween.IsComplete() : {tween.IsPlaying()}");
+            return;
+        }
+
+        if (parentDic[playUIType].activeSelf)
+        {
+            canvasGroupDic[playUIType].alpha = 1;
+            tween = canvasGroupDic[playUIType].DOFade(0, 0.5f).SetEase(Ease.Linear);
+            await UniTask.WaitUntil(() => !tween.IsPlaying());
+            parentDic[playUIType].SetActive(false);
+        }
+        else
+        {
+            parentDic[playUIType].SetActive(true);
+            canvasGroupDic[playUIType].alpha = 0;
+            tween = canvasGroupDic[playUIType].DOFade(1, 0.5f).SetEase(Ease.Linear);
+            await UniTask.WaitUntil(() => !tween.IsPlaying());
+        }
+    }
+
     public void ActiveAllUI(bool isOn)
     {
         statusParent.gameObject.SetActive(isOn);
         rightMenuParent.gameObject.SetActive(isOn);
         optionParent.gameObject.SetActive(isOn);
         phoneParent.gameObject.SetActive(isOn);
+    }
+
+    public void FadeOut(bool fade)
+    {
+
     }
 
     #endregion
@@ -361,3 +404,4 @@ public class PlayManager : Singleton<PlayManager>
             OpenPhone();
     }
 }
+
