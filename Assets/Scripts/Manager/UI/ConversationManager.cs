@@ -17,7 +17,7 @@ public class ConversationManager : Singleton<ConversationManager>
     UIConversation currentUICon;
 
     ConversationTable conTable;
-    ConversationData currentConData;
+    public ConversationData currentConData;
 
     ConversationSettingTable conSetTable;
     ConversationSettingData conSetData;

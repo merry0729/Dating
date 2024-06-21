@@ -31,6 +31,6 @@ public class UIStatus : MonoBehaviour
     {
         statusNameText.text = type.ToString();
         statusValueText.text = value.ToString();
-        statusFillImg.fillAmount = value / 1000;
+        statusFillImg.fillAmount = value / 100;
     }
 }

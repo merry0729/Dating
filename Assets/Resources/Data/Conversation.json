@@ -7,7 +7,7 @@
     "CharPos": 0,
     "CharScale": 1,
     "Text": "Hello",
-    "Next": 2,
+    "Next": 1,
     "Hold": false,
     "RemoveHold": false
   },
@@ -19,7 +19,7 @@
     "CharPos": 1,
     "CharScale": 2,
     "Text": "Thank",
-    "Next": 3,
+    "Next": 2,
     "Hold": false,
     "RemoveHold": false
   },
@@ -31,7 +31,7 @@
     "CharPos": 2,
     "CharScale": 1,
     "Text": "<b>Battlecry:</b> Add a random spell to each player's hand.",
-    "Next": 4,
+    "Next": 3,
     "Hold": true,
     "RemoveHold": false
   },
@@ -43,7 +43,7 @@
     "CharPos": 1,
     "CharScale": 0,
     "Text": "When this attacks, restore 4 Health to the hero of the player who buffed it.",
-    "Next": 5,
+    "Next": 4,
     "Hold": false,
     "RemoveHold": false
   },
@@ -55,7 +55,7 @@
     "CharPos": 0,
     "CharScale": 1,
     "Text": "Increased Attack.",
-    "Next": 6,
+    "Next": 5,
     "Hold": false,
     "RemoveHold": false
   },
@@ -67,7 +67,7 @@
     "CharPos": 2,
     "CharScale": 2,
     "Text": "Also damages the minions next to whomever\nhe attacks.",
-    "Next": 3,
+    "Next": 2,
     "Hold": false,
     "RemoveHold": true
   }

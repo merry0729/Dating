@@ -133,6 +133,7 @@ public class UIManager : Singleton<UIManager>
         {
             PlayManager.Instance.SetPlayUI();
             PhoneManager.Instance.SetPhoneUI();
+            Debug.Log($"Play Complete");
 
             resolutionRect.Add(currentSceneUI.transform.Find("Options").GetComponent<RectTransform>());
             resolutionRect.Add(currentSceneUI.transform.Find("Menu").GetComponent<RectTransform>());

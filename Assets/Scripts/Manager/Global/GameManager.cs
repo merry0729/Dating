@@ -14,6 +14,9 @@ public class GameManager : Singleton<GameManager>
     public GameObject soundManagerPrefab;
     public GameObject settingManagerPrefab;
 
+    [Header("[ SaveData ]")]
+    public GameData gameData;
+
     private void Awake()
     {
         TableLoader.OnTableLoadComplete += TableLoadComplete;
@@ -24,7 +27,6 @@ public class GameManager : Singleton<GameManager>
         }
         else
             Destroy(gameObject);
-
     }
 
     void TableLoadComplete()
@@ -82,6 +84,4 @@ public class GameManager : Singleton<GameManager>
     }
 
     #endregion
-
-
 }

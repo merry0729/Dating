@@ -117,21 +117,37 @@ public class PlayManager : Singleton<PlayManager>
 
     public void SetPlayUI()
     {
+        // Menu 오브젝트 등록
         rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
-        SetMenus();
 
+        // Status 오브젝트 등록
         statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
         statusParent_Info = statusParent.transform.Find("Status_Back").transform.Find("Status_Info");
         statusParent_Char = statusParent.transform.Find("Status_Back").transform.Find("Status_Char");
-        CreateStatus();
 
+        // Option 오브젝트 등록
         optionParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Options");
         optionBackground = optionParent.Find("Option_Background").transform;
 
+        // Phone 오브젝트 등록
         phoneParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Phone").gameObject;
 
+        // Common 오브젝트 등록
         emptyBtn = UIManager.Instance.GetCurrentSceneUI().transform.Find("EmptyPlace").GetComponent<UIButton>();
         emptyBtn.OnClick += OnClickEmpty;
+
+        //----------------
+        // Set Method
+        SetMenus();
+        SetStatus();
+
+        // Update Method
+        UpdateStatus(InfoStatusType.Time, 50f);
+        UpdateStatus(InfoStatusType.Cash, 30f);
+
+        UpdateStatus(CharStatusType.Health, 100f);
+        UpdateStatus(CharStatusType.Stress, 5f);
+        UpdateStatus(CharStatusType.Hungry, 25f);
     }
 
 
@@ -222,7 +238,7 @@ public class PlayManager : Singleton<PlayManager>
 
     #region [ Status ]
 
-    void CreateStatus()
+    void SetStatus()
     {
         UIStatus status;
 
@@ -239,6 +255,8 @@ public class PlayManager : Singleton<PlayManager>
             status.SetStatus();
             charStatusDic.Add((CharStatusType)index, status);
         }
+
+        Debug.Log($"CreateStatus");
     }
 
     public void UpdateStatus(InfoStatusType type, float value)

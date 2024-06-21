@@ -10,6 +10,11 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.20 ]
+- Conversation 버그 픽스
+- Game Data 설계중
+- Status 업데이트
+
 [ 2024.06.19 ]
 - Info Status, Char Status 구분
 - Status Prefab 생성
