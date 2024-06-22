@@ -9,7 +9,8 @@
     "Text": "Hello",
     "Next": 1,
     "Hold": false,
-    "RemoveHold": false
+    "RemoveHold": false,
+    "Opiton": 0
   },
   {
     "Id": 1,
@@ -21,7 +22,8 @@
     "Text": "Thank",
     "Next": 2,
     "Hold": false,
-    "RemoveHold": false
+    "RemoveHold": false,
+    "Opiton": 0
   },
   {
     "Id": 2,
@@ -33,7 +35,8 @@
     "Text": "<b>Battlecry:</b> Add a random spell to each player's hand.",
     "Next": 3,
     "Hold": true,
-    "RemoveHold": false
+    "RemoveHold": false,
+    "Opiton": 0
   },
   {
     "Id": 3,
@@ -45,7 +48,8 @@
     "Text": "When this attacks, restore 4 Health to the hero of the player who buffed it.",
     "Next": 4,
     "Hold": false,
-    "RemoveHold": false
+    "RemoveHold": false,
+    "Opiton": 0
   },
   {
     "Id": 4,
@@ -57,7 +61,8 @@
     "Text": "Increased Attack.",
     "Next": 5,
     "Hold": false,
-    "RemoveHold": false
+    "RemoveHold": false,
+    "Opiton": 1
   },
   {
     "Id": 5,
@@ -69,6 +74,7 @@
     "Text": "Also damages the minions next to whomever\nhe attacks.",
     "Next": 2,
     "Hold": false,
-    "RemoveHold": true
+    "RemoveHold": true,
+    "Opiton": 0
   }
 ]

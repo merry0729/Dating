@@ -16,6 +16,7 @@ public partial class ConversationData
     public int Next;
     public bool Hold;
     public bool RemoveHold;
+    public int Opiton;
     
     public static ConversationTable Table;
     public ConversationData ShallowCopy()

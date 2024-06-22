@@ -44,3 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e301019feb42345b860c593028d5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charTypeDic:
+    keys: 
+    values: []
+  holdConversation: {fileID: 0}
+  currentConData:
+    Id: 0
+    Name: 
+    Who: 0
+    ConPos: 0
+    CharPos: 0
+    CharScale: 0
+    Text: 
+    Next: 0
+    Hold: 0
+    RemoveHold: 0
+    Opiton: 0
+  optionsData:
+    Id: 0
+    Name: 
+    OptionType: 
+    Options: []
+  uiOptionPrefab: {fileID: 1715733174268406658, guid: 31bc17e9aed87604b960d9ca2f645c4e, type: 3}
+  uiOptions: {fileID: 0}
+  optionsList: []

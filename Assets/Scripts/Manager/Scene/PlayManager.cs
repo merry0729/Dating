@@ -18,15 +18,14 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
-
     #region [ Play UI Object ]
 
     [Header(" [ Play UI Object ] ")]
     public GameObject rightMenuPrefab;
+    public Transform menuParent;
     public Transform rightMenuParent;
 
     #endregion
-
 
     #region [ Status ]
 
@@ -42,7 +41,6 @@ public class PlayManager : Singleton<PlayManager>
     public SerializableDictionary<CharStatusType, UIStatus> charStatusDic = new SerializableDictionary<CharStatusType, UIStatus>();
 
     #endregion
-
 
     #region [ Conversation Character Declare ]
 
@@ -60,16 +58,9 @@ public class PlayManager : Singleton<PlayManager>
     #region [ Options Declare ]
 
     [Header(" [ Options ] ")]
-    public OptionsData optionsData;
-    public OptionsTable optionsTable;
-    
 
-    public GameObject uiOptionPrefab;
-    private Transform optionParent;
-    private Transform optionBackground;
-    public List<UIOptions> optionsList = new List<UIOptions>();
-
-    int currentOptionIndex = 0;
+    public Transform optionParent;
+    public Transform optionBackground;
 
     #endregion
 
@@ -91,8 +82,6 @@ public class PlayManager : Singleton<PlayManager>
 
     private void Awake()
     {
-        optionsTable = OptionsData.Table;
-
         SetPlayObject();
         SetCharacterSettingData();
     }
@@ -122,9 +111,10 @@ public class PlayManager : Singleton<PlayManager>
     public void SetPlayUI()
     {
         // Menu 오브젝트 등록
-        rightMenuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu").Find("RightMenu");
-        parentDic.Add(PlayUIType.Menu, rightMenuParent.gameObject);
-        canvasGroupDic.Add(PlayUIType.Menu, rightMenuParent.GetComponent<CanvasGroup>());
+        menuParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Menu");
+        rightMenuParent = menuParent.Find("RightMenu");
+        parentDic.Add(PlayUIType.Menu, menuParent.gameObject);
+        canvasGroupDic.Add(PlayUIType.Menu, menuParent.GetComponent<CanvasGroup>());
 
         // Status 오브젝트 등록
         statusParent = UIManager.Instance.GetCurrentSceneUI().transform.Find("Status");
@@ -161,7 +151,6 @@ public class PlayManager : Singleton<PlayManager>
         UpdateStatus(CharStatusType.Stress, 5f);
         UpdateStatus(CharStatusType.Hungry, 25f);
     }
-
 
     #region [ Background ]
 
@@ -283,45 +272,6 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
-    #region [ Option ]
-
-    void SetOptions(int optionIndex)
-    {
-        Debug.Log($"optionIndex : {optionIndex}");
-
-        optionParent.gameObject.SetActive(true);
-
-        optionsData = optionsTable.TryGet(optionIndex);
-        int optionsCount = optionsData.Options.Length;
-
-        if(optionsList.Count > 0)
-        {
-            for(int index = 0; index < optionsList.Count; index++)
-            {
-                if (optionsList[index].gameObject.activeSelf)
-                    optionsList[index].gameObject.SetActive(false);
-            }
-        }
-
-        if (optionsList.Count < optionsCount)
-        {
-            int createCount = optionsCount - optionsList.Count;
-
-            for(int index = 0; index < createCount; index++)
-            {
-                optionsList.Add(Instantiate(uiOptionPrefab, optionBackground).GetComponent<UIOptions>());
-            }
-        }
-
-        for (int index = 0; index < optionsCount; index++)
-        {
-            optionsList[index].gameObject.SetActive(true);
-            optionsList[index].SetOptionData(optionsData, optionsList.Count, index);
-        }
-    }
-
-    #endregion
-
     #region [ Phone ]
 
     void OpenPhone()
@@ -338,11 +288,11 @@ public class PlayManager : Singleton<PlayManager>
         if (UIManager.Instance.GetActiveWindowUI(WindowUIType.SettingUI))
             UIManager.Instance.ActiveWindowUI(WindowUIType.SettingUI, false);
         else if (phoneParent.gameObject.activeSelf)
-            phoneParent.gameObject.SetActive(false);
+            ReverseActivePlayUI(PlayUIType.Phone);
         else if (statusParent.gameObject.activeSelf)
-            statusParent.gameObject.SetActive(false);
-        else if (!rightMenuParent.gameObject.activeSelf)
-            rightMenuParent.gameObject.SetActive(true);
+            ReverseActivePlayUI(PlayUIType.Status);
+        else if (!menuParent.gameObject.activeSelf)
+            ReverseActivePlayUI(PlayUIType.Menu);
     }
 
     public void ActivePlayUI(GameObject playUI)
@@ -350,44 +300,46 @@ public class PlayManager : Singleton<PlayManager>
         playUI.SetActive(!playUI.activeSelf);
     }
 
-    Tween tween;
+    Tween fadeTween;
 
-    public async void ActivePlayUI(PlayUIType playUIType)
+    public async void ReverseActivePlayUI(PlayUIType playUIType)
     {
-        if (tween != null && tween.IsPlaying())
+        if (fadeTween != null && fadeTween.IsPlaying())
         {
-            Debug.Log($"tween.IsComplete() : {tween.IsPlaying()}");
+            Debug.Log($"tween.IsComplete() : {fadeTween.IsPlaying()}");
             return;
         }
 
         if (parentDic[playUIType].activeSelf)
+            ActivePlayUI(playUIType, false);
+        else
+            ActivePlayUI(playUIType, true);
+    }
+    public async void ActivePlayUI(PlayUIType playUIType, bool fade)
+    {
+        if (!fade)
         {
             canvasGroupDic[playUIType].alpha = 1;
-            tween = canvasGroupDic[playUIType].DOFade(0, 0.5f).SetEase(Ease.Linear);
-            await UniTask.WaitUntil(() => !tween.IsPlaying());
+            fadeTween = canvasGroupDic[playUIType].DOFade(0, 0.5f).SetEase(Ease.Linear);
+            await UniTask.WaitUntil(() => !fadeTween.IsPlaying());
             parentDic[playUIType].SetActive(false);
         }
         else
         {
             parentDic[playUIType].SetActive(true);
             canvasGroupDic[playUIType].alpha = 0;
-            tween = canvasGroupDic[playUIType].DOFade(1, 0.5f).SetEase(Ease.Linear);
-            await UniTask.WaitUntil(() => !tween.IsPlaying());
+            fadeTween = canvasGroupDic[playUIType].DOFade(1, 0.5f).SetEase(Ease.Linear);
+            await UniTask.WaitUntil(() => !fadeTween.IsPlaying());
         }
     }
 
     public void ActiveAllUI(bool isOn)
     {
-        statusParent.gameObject.SetActive(isOn);
-        rightMenuParent.gameObject.SetActive(isOn);
-        optionParent.gameObject.SetActive(isOn);
-        phoneParent.gameObject.SetActive(isOn);
+        for (int index = 0; index < Enum.GetValues(typeof(PlayUIType)).Length; index++)
+            ActivePlayUI((PlayUIType)index, isOn);
     }
 
-    public void FadeOut(bool fade)
-    {
 
-    }
 
     #endregion
 
@@ -397,11 +349,8 @@ public class PlayManager : Singleton<PlayManager>
         if (Input.GetKeyDown(KeyCode.Return))
             PlayStart();
 
-        if (Input.GetKeyDown(KeyCode.O))
-            SetOptions(currentOptionIndex++);
 
         if (Input.GetKeyDown(KeyCode.P))
             OpenPhone();
     }
 }
-

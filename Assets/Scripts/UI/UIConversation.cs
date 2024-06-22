@@ -102,6 +102,9 @@ public class UIConversation : MonoBehaviour
         isTyping = false;
         conText.text = currentConData.Text;
         currentIndex = 0;
+
+        if (currentConData.Opiton != 0)
+            ConversationManager.Instance.SetOptions(currentConData.Opiton);
     }
 
     private void Update()

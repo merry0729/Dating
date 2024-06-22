@@ -10,6 +10,11 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.22 ]
+- Conversation Options 로직 수정 및 위치 변경
+- Conversation Options 클릭 인터랙션 추가
+- Conversation 데이터에 Option 추가
+
 [ 2024.06.21 ]
 - Play Scene UI Fade 기능
 - DOTween PlugIn 추가

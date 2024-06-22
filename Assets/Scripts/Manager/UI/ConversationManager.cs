@@ -24,6 +24,20 @@ public class ConversationManager : Singleton<ConversationManager>
 
     int currentId = 0;
 
+    #region [ Options Declare ]
+
+    [Header(" [ Options ] ")]
+    public OptionsData optionsData;
+    public OptionsTable optionsTable;
+
+    public GameObject uiOptionPrefab;
+    public List<UIOptions> optionsList = new List<UIOptions>();
+
+    int currentOptionIndex = 1;
+
+    #endregion
+
+
     private void Awake()
     {
         Init();
@@ -31,6 +45,8 @@ public class ConversationManager : Singleton<ConversationManager>
 
     private void Init()
     {
+        optionsTable = OptionsData.Table;
+
         for (int index = 0; index < Enum.GetValues(typeof(CharType)).Length; index++)
             charTypeDic.Add((CharType)index, ((CharType)index).ToString());
     }
@@ -140,9 +156,58 @@ public class ConversationManager : Singleton<ConversationManager>
     }
 
 
+    #region [ Option ]
+
+    public void SetOptions(int optionIndex)
+    {
+        Debug.Log($"optionIndex : {optionIndex}");
+
+        ActiveOption(true);
+
+        optionsData = optionsTable.TryGet(optionIndex);
+        int optionsCount = optionsData.Options.Length;
+
+        if (optionsList.Count > 0)
+        {
+            for (int index = 0; index < optionsList.Count; index++)
+            {
+                if (optionsList[index].gameObject.activeSelf)
+                    optionsList[index].gameObject.SetActive(false);
+            }
+        }
+
+        if (optionsList.Count < optionsCount)
+        {
+            int createCount = optionsCount - optionsList.Count;
+
+            for (int index = 0; index < createCount; index++)
+            {
+                optionsList.Add(Instantiate(uiOptionPrefab, PlayManager.Instance.optionBackground).GetComponent<UIOptions>());
+            }
+        }
+
+        for (int index = 0; index < optionsCount; index++)
+        {
+            optionsList[index].gameObject.SetActive(true);
+            optionsList[index].SetOptionData(optionsData, optionsList.Count, index);
+        }
+    }
+
+    public void ActiveOption(bool isOn)
+    {
+        PlayManager.Instance.optionParent.gameObject.SetActive(isOn);
+    }
+
+    #endregion
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
             EnableConversation();
+
+
+        if (Input.GetKeyDown(KeyCode.O))
+            SetOptions(currentOptionIndex++);
     }
 }

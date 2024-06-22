@@ -53,14 +53,14 @@ public class UIMenu : MonoBehaviour
         {
             case MenuType.Status:
                 Debug.Log($"Status Menu");
-                PlayManager.Instance.ActivePlayUI(PlayUIType.Status);
+                PlayManager.Instance.ReverseActivePlayUI(PlayUIType.Status);
                 break;
             case MenuType.Achievement:
                 Debug.Log($"Achievement Menu");
                 break;
             case MenuType.Phone:
                 Debug.Log($"Phone Menu");
-                PlayManager.Instance.ActivePlayUI(PlayUIType.Phone);
+                PlayManager.Instance.ReverseActivePlayUI(PlayUIType.Phone);
                 break;
             case MenuType.UIClear:
                 Debug.Log($"UI Clear Menu");
