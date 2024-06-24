@@ -79,7 +79,6 @@ public class PlayManager : Singleton<PlayManager>
 
     #endregion
 
-
     private void Awake()
     {
         SetPlayObject();

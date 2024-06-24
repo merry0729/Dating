@@ -87,7 +87,7 @@ public class MessengerManager : Singleton<MessengerManager>
     {
         UIMessageSender uiMessageSender = null;
 
-        for (int index = 0; index < ConversationManager.Instance.charTypeDic.Count; index++)
+        for (int index = 1; index < ConversationManager.Instance.charTypeDic.Count; index++)
         {
             uiMessageSender = Instantiate(messengerSenderPrefab, messengerContent).GetComponent<UIMessageSender>();
             uiMessageSender.SetMessageSender(index);
