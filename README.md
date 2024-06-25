@@ -10,6 +10,15 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.06.25 ]
+- SaveLoad Menu 추가
+- SaveLoad Menu 리소스 추가
+- Menu Table Data 수정
+
+[ 2024.06.24 ]
+- Phone UI 수정
+- Phone Messenger Sender 로직 수정
+
 [ 2024.06.22 ]
 - Conversation Options 로직 수정 및 위치 변경
 - Conversation Options 클릭 인터랙션 추가

@@ -35,6 +35,7 @@ public enum MenuType
     Achievement,
     Phone,
     UIClear,
+    SaveLoad,
     Setting,
     Exit,
 }

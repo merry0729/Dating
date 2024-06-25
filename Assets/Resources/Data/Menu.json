@@ -22,11 +22,16 @@
   {
     "Id": 4,
     "StatusType": 4,
-    "MenuFileName": "Setting"
+    "MenuFileName": "SaveLoad"
   },
   {
     "Id": 5,
     "StatusType": 5,
+    "MenuFileName": "Setting"
+  },
+  {
+    "Id": 6,
+    "StatusType": 6,
     "MenuFileName": "Exit"
   }
 ]

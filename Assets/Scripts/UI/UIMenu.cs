@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIMenu : MonoBehaviour
 {
@@ -65,6 +66,9 @@ public class UIMenu : MonoBehaviour
             case MenuType.UIClear:
                 Debug.Log($"UI Clear Menu");
                 PlayManager.Instance.ActiveAllUI(false);
+                break;
+            case MenuType.SaveLoad:
+                Debug.Log($"Save Load Menu");
                 break;
             case MenuType.Setting:
                 Debug.Log($"Setting Menu");
