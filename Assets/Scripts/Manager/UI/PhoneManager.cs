@@ -48,7 +48,8 @@ public class PhoneManager : Singleton<PhoneManager>
 
     private void OnDestroy()
     {
-        backBtn.OnClick -= OnClickBack;
+        if(backBtn != null)
+            backBtn.OnClick -= OnClickBack;
     }
 
     void SetPhoneData()

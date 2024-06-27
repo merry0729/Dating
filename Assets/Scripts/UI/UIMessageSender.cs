@@ -26,7 +26,8 @@ public class UIMessageSender : MonoBehaviour
 
     private void OnDestroy()
     {
-        senderBtn.OnClick -= OnClickSender;
+        if (senderBtn != null)
+            senderBtn.OnClick -= OnClickSender;
     }
 
     public void SetMessageSender(int index)

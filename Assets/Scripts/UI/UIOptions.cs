@@ -26,7 +26,8 @@ public class UIOptions : MonoBehaviour
 
     private void OnDestroy()
     {
-        optionBtn.OnClick -= OnClickOption;
+        if (optionBtn != null)
+            optionBtn.OnClick -= OnClickOption;
     }
 
     public void SetOptionData(OptionsData argOptionsData, int fullCount, int index)

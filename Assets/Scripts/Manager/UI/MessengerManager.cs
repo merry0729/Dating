@@ -66,7 +66,8 @@ public class MessengerManager : Singleton<MessengerManager>
 
     private void OnDestroy()
     {
-        PhoneManager.Instance.backAction -= OnBack;
+        if (PhoneManager.Instance.backAction != null)
+            PhoneManager.Instance.backAction -= OnBack;
     }
 
     public void SetMessengerUI()

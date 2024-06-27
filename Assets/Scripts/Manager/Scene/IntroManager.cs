@@ -14,9 +14,12 @@ public class IntroManager : Singleton<IntroManager>
 
     private void OnDestroy()
     {
-        startButton.OnClick -= OnClickStart;
-        settingButton.OnClick -= OnClickSetting;
-        exitButton.OnClick -= OnClickExit;
+        if (startButton != null)
+            startButton.OnClick -= OnClickStart;
+        if (settingButton != null)
+            settingButton.OnClick -= OnClickSetting;
+        if (exitButton != null)
+            exitButton.OnClick -= OnClickExit;
     }
 
     public void SetIntroUI()

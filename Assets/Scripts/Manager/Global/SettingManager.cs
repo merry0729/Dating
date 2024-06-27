@@ -71,9 +71,12 @@ public class SettingManager : Singleton<SettingManager>
 
     private void OnDestroy()
     {
-        videoBtn.OnClick -= () => OnClickSetting(SettingType.Video);
-        soundBtn.OnClick -= () => OnClickSetting(SettingType.Sound);
-        exitBtn.OnClick -= OnClickExit;
+        if(videoBtn != null)
+            videoBtn.OnClick -= () => OnClickSetting(SettingType.Video);
+        if (soundBtn != null)
+            soundBtn.OnClick -= () => OnClickSetting(SettingType.Sound);
+        if (exitBtn != null)
+            exitBtn.OnClick -= OnClickExit;
     }
 
     void Init()

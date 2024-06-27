@@ -92,7 +92,8 @@ public class PlayManager : Singleton<PlayManager>
 
     private void OnDestroy()
     {
-        emptyBtn.OnClick -= OnClickEmpty;
+        if (emptyBtn != null)
+            emptyBtn.OnClick -= OnClickEmpty;
     }
 
     public void PlayStart()

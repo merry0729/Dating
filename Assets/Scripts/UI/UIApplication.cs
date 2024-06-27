@@ -21,7 +21,8 @@ public class UIApplication : MonoBehaviour
 
     private void OnDestroy()
     {
-        appBtn.OnClick -= OnClickApp;
+        if (appBtn != null)
+            appBtn.OnClick -= OnClickApp;
     }
 
     public void SetApplication(int index)

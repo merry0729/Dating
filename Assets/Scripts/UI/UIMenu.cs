@@ -31,7 +31,8 @@ public class UIMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        menuBtn.OnClick -= () => OnClickMenu(menuType);
+        if (menuBtn != null)
+            menuBtn.OnClick -= () => OnClickMenu(menuType);
     }
 
     public void SetMenu(MenuType menu)
