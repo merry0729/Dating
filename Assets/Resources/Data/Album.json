@@ -1,0 +1,97 @@
+﻿[
+  {
+    "Id": 0,
+    "Album_Illust_FileName": "Hello",
+    "Album_Character_FileName": "Hello"
+  },
+  {
+    "Id": 1,
+    "Album_Illust_FileName": "Thank",
+    "Album_Character_FileName": "Thank"
+  },
+  {
+    "Id": 2,
+    "Album_Illust_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Album_Character_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 3,
+    "Album_Illust_FileName": "When this attacks, restore 4 Health to the hero of the player who buffed it.",
+    "Album_Character_FileName": "When this attacks, restore 4 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 4,
+    "Album_Illust_FileName": "Increased Attack.",
+    "Album_Character_FileName": "Increased Attack."
+  },
+  {
+    "Id": 5,
+    "Album_Illust_FileName": "Also damages the minions next to whomever he attacks.",
+    "Album_Character_FileName": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 6,
+    "Album_Illust_FileName": "Hello",
+    "Album_Character_FileName": "Hello"
+  },
+  {
+    "Id": 7,
+    "Album_Illust_FileName": "Thank",
+    "Album_Character_FileName": "Thank"
+  },
+  {
+    "Id": 8,
+    "Album_Illust_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Album_Character_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 9,
+    "Album_Illust_FileName": "When this attacks, restore 5 Health to the hero of the player who buffed it.",
+    "Album_Character_FileName": "When this attacks, restore 5 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 10,
+    "Album_Illust_FileName": "Increased Attack.",
+    "Album_Character_FileName": "Increased Attack."
+  },
+  {
+    "Id": 11,
+    "Album_Illust_FileName": "Also damages the minions next to whomever he attacks.",
+    "Album_Character_FileName": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 12,
+    "Album_Illust_FileName": "Hello",
+    "Album_Character_FileName": "Hello"
+  },
+  {
+    "Id": 13,
+    "Album_Illust_FileName": "Thank",
+    "Album_Character_FileName": "Thank"
+  },
+  {
+    "Id": 14,
+    "Album_Illust_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand.",
+    "Album_Character_FileName": "<b>Battlecry:</b> Add a random spell to each player's hand."
+  },
+  {
+    "Id": 15,
+    "Album_Illust_FileName": "When this attacks, restore 6 Health to the hero of the player who buffed it.",
+    "Album_Character_FileName": "When this attacks, restore 6 Health to the hero of the player who buffed it."
+  },
+  {
+    "Id": 16,
+    "Album_Illust_FileName": "Increased Attack.",
+    "Album_Character_FileName": "Increased Attack."
+  },
+  {
+    "Id": 17,
+    "Album_Illust_FileName": "Also damages the minions next to whomever he attacks.",
+    "Album_Character_FileName": "Also damages the minions next to whomever he attacks."
+  },
+  {
+    "Id": 18,
+    "Album_Illust_FileName": "Hello",
+    "Album_Character_FileName": "Hello"
+  }
+]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.U2D.Animation;
 
 public class UIMessageSender : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class UIMessageSender : MonoBehaviour
 
     string directoryPath = "Illustration/Character/";
 
-    CharacterTable characterTable;
     CharacterData characterData;
 
     private void Awake()
@@ -33,6 +33,7 @@ public class UIMessageSender : MonoBehaviour
     public void SetMessageSender(int index)
     {
         currentMessageSender = (CharType)index;
+        characterData = CharacterData.Table.TryGet(index);
 
         SetMessageSenderUI();
         UpdateMessageSenderUI();
@@ -40,7 +41,6 @@ public class UIMessageSender : MonoBehaviour
 
     void SetMessageSenderUI()
     {
-        characterTable = CharacterData.Table;
         senderIllust = transform.Find("Character_Outline").Find("Character_Mask").Find("Characker_Illust").GetComponent<Image>();
         senderText = transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         Debug.Log($"SetMessageSenderUI");
@@ -49,7 +49,6 @@ public class UIMessageSender : MonoBehaviour
     void UpdateMessageSenderUI()
     {
         Debug.Log($"UpdateMessageSenderUI");
-        characterData = characterTable.TryGet((int)currentMessageSender);
 
         Sprite characterSprite = Resources.Load<Sprite>(directoryPath + characterData.ImgFileName);
         senderIllust.sprite = characterSprite;
