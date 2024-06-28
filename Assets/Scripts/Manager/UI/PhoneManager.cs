@@ -28,6 +28,13 @@ public class PhoneManager : Singleton<PhoneManager>
 
     #endregion
 
+    #region [ Album ]
+
+    [Header("[ Album ]")]
+    public Transform albumParent;
+
+    #endregion
+
 
     #region [ Common ]
 
@@ -66,6 +73,10 @@ public class PhoneManager : Singleton<PhoneManager>
         messengerParent = PlayManager.Instance.phoneParent.transform.Find("Messenger");
         MessengerManager.Instance.SetMessengerUI();
 
+        // Album
+        albumParent = PlayManager.Instance.phoneParent.transform.Find("Album");
+        AlbumManager.Instance.SetAlbumUI();
+
         // Common
         commonParent = PlayManager.Instance.phoneParent.transform.Find("Common");
         backBtn = commonParent.Find("Back_Btn").GetComponent<UIButton>();
@@ -89,6 +100,11 @@ public class PhoneManager : Singleton<PhoneManager>
             {
                 case ApplicationType.Messenger:
                     openLayerTuStack.Push((PhoneState.InApp, messengerParent.gameObject));
+                    closeLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
+                    break;
+
+                case ApplicationType.Album:
+                    openLayerTuStack.Push((PhoneState.InApp, albumParent.gameObject));
                     closeLayerTuStack.Push((PhoneState.Application, applicationParent.gameObject));
                     break;
             }

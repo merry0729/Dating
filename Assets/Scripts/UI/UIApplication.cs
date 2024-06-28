@@ -51,6 +51,9 @@ public class UIApplication : MonoBehaviour
             case ApplicationType.Messenger:
                 PhoneManager.Instance.SetPhoneState(PhoneState.InApp, appType);
                 break;
+            case ApplicationType.Album:
+                PhoneManager.Instance.SetPhoneState(PhoneState.InApp, appType);
+                break;
         }
     }
 
