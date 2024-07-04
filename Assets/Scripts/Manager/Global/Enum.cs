@@ -15,6 +15,7 @@ public enum SceneType
 public enum WindowUIType
 {
     SettingUI,
+    ConfirmUI,
 }
 
 #endregion

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
@@ -11,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject UICanvasPrefab;
     private GameObject UICanvas;
     public Transform sceneUI;
+    public Transform commonUI;
 
     [Header("[ UI Play ]")]
     public GameObject playUI;
@@ -20,15 +22,22 @@ public class UIManager : Singleton<UIManager>
     [Header("[ UI Resolution ]")]
     public List<RectTransform> resolutionRect;
 
+    [Header("[ UI Common ]")]
     public GameObject settingUIObj;
-    public GameObject currentSceneUI;
+    public GameObject confirmUIObj;
+
+    UIConfirm uiConfirm;
+
 
     [Header("[ UI Prefab ]")]
     public GameObject settingUIPrefab;
+    public GameObject confirmUIPrefab;
 
     [Header("[ Scene UI Prefab ]")]
     public GameObject introUIPrefab;
     public GameObject playUIPrefab;
+
+    public GameObject currentSceneUI;
 
     public Action<WindowUIType, bool> WindowOpenAction;
 
@@ -63,7 +72,11 @@ public class UIManager : Singleton<UIManager>
         if (sceneUI == null)
         {
             sceneUI = UICanvas.transform.Find("SceneUI").transform;
-            
+        }
+
+        if (commonUI == null)
+        {
+            commonUI = UICanvas.transform.Find("CommonUI").transform;
         }
 
 
@@ -71,6 +84,8 @@ public class UIManager : Singleton<UIManager>
         sceneUIPrefab.Add(SceneType.PlayScene, playUIPrefab);
 
         settingUIObj = LoadUI(settingUIPrefab);
+        confirmUIObj = LoadUI(confirmUIPrefab);
+        uiConfirm = confirmUIObj.GetComponent<UIConfirm>();
         //DontDestroyOnLoad(settingUIObj);
     }
 
@@ -80,6 +95,9 @@ public class UIManager : Singleton<UIManager>
         {
             case WindowUIType.SettingUI:
                 settingUIObj.SetActive(isOn);
+                break;
+            case WindowUIType.ConfirmUI:
+                confirmUIObj.SetActive(isOn);
                 break;
         }
 
@@ -93,6 +111,8 @@ public class UIManager : Singleton<UIManager>
         {
             case WindowUIType.SettingUI:
                 return settingUIObj.activeSelf;
+            case WindowUIType.ConfirmUI:
+                return confirmUIObj.activeSelf;
             default:
                 return false;
         }
@@ -105,8 +125,7 @@ public class UIManager : Singleton<UIManager>
 
     public GameObject LoadUI(GameObject uiObject)
     {
-        GameObject loadedUI = Instantiate(uiObject, UICanvas.transform);
-
+        GameObject loadedUI = Instantiate(uiObject, commonUI);
         return loadedUI;
     }
 
@@ -115,7 +134,7 @@ public class UIManager : Singleton<UIManager>
         if (currentSceneUI != null)
             Destroy(currentSceneUI);
 
-        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], sceneUI.transform);
+        currentSceneUI = Instantiate(sceneUIPrefab[sceneType], sceneUI);
 
         if(resolutionRect.Count > 0)
             resolutionRect.Clear();

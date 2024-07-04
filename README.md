@@ -10,6 +10,10 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.07.04 ]
+- 공용 Confirm Window 설계 중
+- 공용 Confirm Window UI 추가
+
 [ 2024.06.28 ]
 - Album 진입 및 오브젝트 생성
 - Album Table 생성
