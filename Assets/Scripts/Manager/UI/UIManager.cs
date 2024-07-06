@@ -92,7 +92,7 @@ public class UIManager : Singleton<UIManager>
         //DontDestroyOnLoad(settingUIObj);
     }
 
-    public void ActiveWindowUI(WindowUIType windowUIType, bool isOn)
+    public void ActiveWindowUI(WindowUIType windowUIType, bool isOn, OnConfirmCallback callback = null)
     {
         switch (windowUIType)
         {
@@ -101,6 +101,7 @@ public class UIManager : Singleton<UIManager>
                 break;
             case WindowUIType.ConfirmUI:
                 confirmUIObj.SetActive(isOn);
+                confirmCallback = callback;
                 break;
         }
 

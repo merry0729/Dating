@@ -15,11 +15,6 @@ public class UIConfirm : MonoBehaviour
         cancelBtn.OnClick += OnClickCancel;
     }
 
-    public void ShowConfirmDialog(OnConfirmCallback callback)
-    {
-        UIManager.Instance.confirmCallback = callback;
-    }
-
     void OnClickConfirm()
     {
         gameObject.SetActive(false);
