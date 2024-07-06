@@ -45,7 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UICanvasPrefab: {fileID: 5019599015289044920, guid: ed8ee2fc37efa334aad2f25ad2733204, type: 3}
-  UIParent: {fileID: 0}
+  sceneUI: {fileID: 0}
+  commonUI: {fileID: 0}
+  playUI: {fileID: 0}
+  optionsUI: {fileID: 0}
+  characterPlayingUI: {fileID: 0}
+  resolutionRect: []
+  settingUIObj: {fileID: 0}
+  confirmUIObj: {fileID: 0}
+  uiConfirm: {fileID: 0}
   settingUIPrefab: {fileID: 5959021712122099906, guid: 55652dbfe53f220408cb5673b27db573, type: 3}
+  confirmUIPrefab: {fileID: 6147635977722686480, guid: 0976c0e8d2dea994995cd320d025dfe0, type: 3}
   introUIPrefab: {fileID: 3551729660942049759, guid: d718ed2d495059d49b5e0fbd4fc41889, type: 3}
   playUIPrefab: {fileID: 8992470934578374913, guid: 908a54e8a226b0e429bed246b4acb6c7, type: 3}
+  currentSceneUI: {fileID: 0}

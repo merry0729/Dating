@@ -10,6 +10,9 @@
 
 [ ----- 진행사항 ----- ]
 
+[ 2024.07.05 ]
+- 공용 Confirm Window 로직 수정
+
 [ 2024.07.04 ]
 - 공용 Confirm Window 설계 중
 - 공용 Confirm Window UI 추가

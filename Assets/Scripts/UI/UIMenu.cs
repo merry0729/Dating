@@ -77,7 +77,14 @@ public class UIMenu : MonoBehaviour
                 break;
             case MenuType.Exit:
                 Debug.Log($"Exit Menu");
+                UIManager.Instance.ActiveWindowUI(WindowUIType.ConfirmUI, true);
+                UIManager.Instance.uiConfirm.ShowConfirmDialog(ConfirmExit);
                 break;
         }
+    }
+
+    void ConfirmExit()
+    {
+        Debug.Log($"ConfirmExit");
     }
 }

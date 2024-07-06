@@ -26,7 +26,7 @@ public class UIManager : Singleton<UIManager>
     public GameObject settingUIObj;
     public GameObject confirmUIObj;
 
-    UIConfirm uiConfirm;
+    public UIConfirm uiConfirm;
 
 
     [Header("[ UI Prefab ]")]
@@ -40,6 +40,9 @@ public class UIManager : Singleton<UIManager>
     public GameObject currentSceneUI;
 
     public Action<WindowUIType, bool> WindowOpenAction;
+
+    public delegate void OnConfirmCallback();
+    public OnConfirmCallback confirmCallback;
 
     private void Awake()
     {
