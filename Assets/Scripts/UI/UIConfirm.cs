@@ -11,6 +11,8 @@ public class UIConfirm : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.SetActive(false);
+
         confirmBtn.OnClick += OnClickConfirm;
         cancelBtn.OnClick += OnClickCancel;
     }
